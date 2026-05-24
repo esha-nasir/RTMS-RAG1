@@ -29,9 +29,9 @@ Evidence Retrieval
     ↓
 Answer Generation
     ↓
-Critic Verification
-    ↓
 Skeptic Guardrail
+    ↓
+Critic Verification
     ↓
 Self-Reflection and Retry
     ↓
