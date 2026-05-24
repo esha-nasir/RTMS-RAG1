@@ -1,0 +1,141 @@
+% Minimal statistical-testing insertions for the thesis LaTeX source.
+% These blocks are intended to be pasted only into Chapter 4 and the
+% corresponding limitation paragraph in Chapter 5.
+
+% ---------------------------------------------------------------------
+% Insert after the existing text in Section 4.3 Evaluation Metrics,
+% immediately before \section{Experimental Protocol}.
+% ---------------------------------------------------------------------
+\subsection{Statistical Uncertainty and Effect Size Reporting}
+
+To avoid interpreting single metric values as exact estimates, the main rate-based
+metrics are reported together with statistical uncertainty. For hallucination rate,
+non-hallucination rate, accuracy, grounded rate and abstention rate, 95\% Wilson
+binomial confidence intervals are used. Wilson intervals are preferable to the
+normal approximation for small evaluation sets and for rates close to 0 or 1.
+
+For a rate \( \hat{p}=k/n \), where \(k\) is the number of positive cases and \(n\)
+is the number of evaluated examples, the Wilson interval is computed as:
+
+\begin{equation}
+\frac{\hat{p} + \frac{z^2}{2n} \pm z
+\sqrt{\frac{\hat{p}(1-\hat{p})}{n} + \frac{z^2}{4n^2}}}
+{1+\frac{z^2}{n}},
+\end{equation}
+
+where \(z=1.96\) for a 95\% confidence interval. In addition to confidence
+intervals, hallucination reductions are reported as absolute risk reduction
+\((p_{\text{baseline}}-p_{\text{system}})\) and relative reduction
+\((p_{\text{baseline}}-p_{\text{system}})/p_{\text{baseline}}\).
+
+For answer F1, which is not a binary metric, paired bootstrap resampling is the
+appropriate test when per-example scores are available. The examples are sampled
+with replacement, the mean F1 difference between two systems is recomputed for
+each bootstrap sample, and the 2.5th and 97.5th percentiles form a 95\% confidence
+interval for the F1 difference. Since the reported tables mainly summarize aggregate
+F1 values, the present analysis emphasizes Wilson intervals and effect sizes for
+rate-based metrics, while repeated runs and full paired bootstrap testing are left as
+future validation.
+
+% ---------------------------------------------------------------------
+% Insert after Table 4.1 in Section 4.5 Results on QReCC.
+% Assumes the QReCC comparison table uses 50 examples.
+% ---------------------------------------------------------------------
+Statistical uncertainty was estimated for the QReCC hallucination rates using
+95\% Wilson confidence intervals. The intervals were: Vanilla RAG 0.58
+\([0.442, 0.706]\), SelfRefineAgentRAG 0.62 \([0.482, 0.741]\),
+ReflexionAgentRAG 0.26 \([0.159, 0.396]\), Proposed with memory 0.28
+\([0.175, 0.417]\), and Proposed without memory 0.18 \([0.098, 0.308]\).
+Compared with Vanilla RAG, the proposed no-memory configuration reduced the
+hallucination rate by 0.40 absolute points, corresponding to a relative reduction of
+69.0\%. The proposed with-memory configuration reduced hallucination by 0.30
+absolute points, corresponding to a relative reduction of 51.7\%. These effect sizes
+suggest that the proposed verification architecture provides a meaningful reduction
+in unsupported generation, although the confidence intervals also show that the
+sample size is still limited.
+
+The F1 values should be interpreted as aggregate answer-quality indicators rather
+than statistically decisive claims. The proposed configurations improved F1 from
+0.3341 for Vanilla RAG to 0.5238 with memory and 0.5199 without memory, but
+a paired bootstrap over per-example F1 scores would be required to quantify the
+uncertainty of these differences.
+
+% ---------------------------------------------------------------------
+% Insert after Table 4.2 in Section 4.6 Results on RAGTruth,
+% before the explanatory paragraph beginning "The results of RAGTruth..."
+% Assumes the RAGTruth comparison table uses 50 examples.
+% ---------------------------------------------------------------------
+For RAGTruth, 95\% Wilson confidence intervals were also computed for the
+hallucination rates. The intervals were: VanillaRAG 0.30 \([0.191, 0.438]\),
+SelfRefineAgentRAG 0.24 \([0.143, 0.374]\), ReflexionAgentRAG 0.24
+\([0.143, 0.374]\), Proposed with memory 0.00 \([0.000, 0.071]\), and
+Proposed without memory 0.00 \([0.000, 0.071]\). Relative to VanillaRAG, the
+proposed configurations reduced the observed hallucination rate by 0.30 absolute
+points. Although no hallucinations were detected for the proposed configurations
+in this run, the confidence interval does not imply that the true hallucination
+probability is exactly zero. Rather, it indicates that, under this sample size, the
+upper 95\% confidence bound remains approximately 0.071.
+
+% Optional replacement for the sentence "The results of RAGTruth strongly support..."
+% Use this softer sentence in the paragraph after the RAGTruth statistics:
+% The results of RAGTruth provide evidence in support of the proposed architecture.
+
+% ---------------------------------------------------------------------
+% Insert after Table 4.3 in Section 4.7 Results on the Legal Corpus.
+% ---------------------------------------------------------------------
+For the main 96-sample temporal legal setting, Wilson confidence intervals were
+computed for the principal rate metrics. Accuracy was 0.8958 with a 95\% CI of
+\([0.819, 0.942]\), grounded rate was 0.9583 with a 95\% CI of \([0.898, 0.984]\),
+hallucination rate was 0.0104 with a 95\% CI of \([0.002, 0.057]\), and abstention
+rate was 0.0312 with a 95\% CI of \([0.011, 0.088]\). These intervals show that
+the observed hallucination rate is low, but the small number of hallucination cases
+means that the estimate should still be interpreted with uncertainty.
+
+For the 20-sample extractive no-memory setting, the hallucination rate of 0.0000
+has a Wilson upper bound of 0.161. This is an important caution for small legal
+subsets: observing no hallucinations in 20 examples does not prove that the true
+hallucination rate is zero. It only shows that no hallucinations were detected in
+that limited sample.
+
+% ---------------------------------------------------------------------
+% Insert after Table 4.4 in Section 4.8 Ablation Study.
+% Assumes the ablation comparison uses 50 examples per condition.
+% ---------------------------------------------------------------------
+The ablation rates were also interpreted with Wilson confidence intervals. In the
+strict setting, hallucination remained 0.10 both without and with memory, with a
+95\% CI of \([0.043, 0.214]\). In the balanced setting, hallucination increased from
+0.10 \([0.043, 0.214]\) to 0.12 \([0.056, 0.238]\), an absolute increase of 0.02.
+In the relaxed setting, hallucination increased from 0.10 \([0.043, 0.214]\) to
+0.16 \([0.083, 0.285]\), an absolute increase of 0.06 and a relative increase of
+60\%. In the safe skeptic setting, hallucination decreased from 0.08
+\([0.032, 0.188]\) to 0.04 \([0.011, 0.135]\), an absolute reduction of 0.04 and
+a relative reduction of 50\%.
+
+These confidence intervals overlap, so the ablation should not be read as a
+definitive significance claim. The stronger conclusion is directional and
+mechanistic: relaxed memory reuse can improve lexical overlap while increasing
+unsupported content, whereas skeptic-filtered memory can reduce the observed
+hallucination rate at the cost of a small decrease in F1. A paired bootstrap over
+per-example F1 scores would be needed to test whether the F1 changes are stable.
+
+% ---------------------------------------------------------------------
+% Add this row inside Table 4.8 Error analysis and limitations,
+% after the "Single-run evaluation" row.
+% ---------------------------------------------------------------------
+Statistical uncertainty & The study reports Wilson confidence intervals and effect
+sizes for the main rate metrics. However, the sample sizes are still limited and most
+experiments are single-run evaluations, so the results should be validated with
+repeated runs and paired bootstrap tests for F1. \\
+
+% ---------------------------------------------------------------------
+% Replace the Chapter 5.3 single-run limitation paragraph with this version.
+% ---------------------------------------------------------------------
+Another limitation is that most experiments were performed as single-run
+evaluations for each configuration. Although confidence intervals and effect sizes
+were reported for the main rate-based metrics, single-run evaluation does not
+measure run-to-run variation caused by stochastic generation. Future experiments
+should repeat each configuration across several runs or random seeds and report
+the mean and standard deviation for hallucination rate, answer F1, exact match,
+groundedness, abstention rate and memory-hit rate. Paired bootstrap confidence
+intervals should also be reported for F1 differences when per-example scores are
+available.

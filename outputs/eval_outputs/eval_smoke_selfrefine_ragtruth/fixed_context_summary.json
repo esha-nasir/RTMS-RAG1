@@ -1,0 +1,31 @@
+{
+  "config": {
+    "backend": "selfrefine",
+    "benchmark_family": "ragtruth",
+    "use_reflexion": false,
+    "disable_memory": false,
+    "max_iters": 1,
+    "max_samples": 5,
+    "top_k": 1,
+    "hallucination_source": "final_answer"
+  },
+  "total_records": 5,
+  "generation": {
+    "hallucination_rate": 0.0,
+    "non_hallucination_rate": 1.0
+  },
+  "hallucination_detection": {
+    "accuracy": 0.0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "confusion_matrix": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 5,
+      "tn": 0
+    },
+    "gold_positive_rate": 1.0,
+    "predicted_positive_rate": 0.0
+  }
+}

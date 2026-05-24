@@ -1,0 +1,32 @@
+{
+  "config": {
+    "use_reflexion": true,
+    "max_iters": 1,
+    "top_k": 1,
+    "judge_qa": true,
+    "qa_only": true,
+    "retrieval_only": false,
+    "disable_retrieval": false,
+    "benchmark_name": "legal_episode_memory",
+    "qa_benchmark_file": "legal_episode_test.jsonl",
+    "retrieval_benchmark_file": "retrieval_benchmark.jsonl"
+  },
+  "qa_draft": {
+    "total": 96,
+    "correct": 86,
+    "accuracy": 0.8958,
+    "retrieval_hit": 96,
+    "retrieval_hit_rate": 1.0,
+    "span_hit": 0,
+    "span_hit_rate": 0.0,
+    "grounded": 92,
+    "grounded_rate": 0.9583,
+    "hallucinated": 1,
+    "hallucination_rate": 0.0104,
+    "abstained": 3,
+    "abstention_rate": 0.0312,
+    "supported_but_wrong": 7,
+    "supported_but_wrong_rate": 0.0729,
+    "parse_failures": 0
+  }
+}

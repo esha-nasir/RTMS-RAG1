@@ -1,0 +1,23 @@
+{
+  "config": {
+    "backend": "yandex_agentic_rag",
+    "benchmark_type": "qrecc",
+    "benchmark_file": "/Users/eshanasir/ReflexionTemporalMemorySuccessAgentRAG/data/qrecc_fixed_context_reconstructed_50.jsonl",
+    "top_k": 3,
+    "judge_qa": true,
+    "max_samples": 50
+  },
+  "qa": {
+    "total": 50,
+    "correct": 40,
+    "accuracy": 0.8,
+    "answer_f1": 0.5856,
+    "exact_match_rate": 0.0,
+    "grounded": 46,
+    "grounded_rate": 0.92,
+    "hallucinated": 1,
+    "hallucination_rate": 0.02,
+    "abstained": 4,
+    "abstention_rate": 0.08
+  }
+}

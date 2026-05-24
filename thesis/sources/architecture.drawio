@@ -1,0 +1,161 @@
+<mxfile host="app.diagrams.net" agent="Codex">
+  <diagram id="architecture" name="Self-Reflective RAG Architecture">
+    <mxGraphModel dx="1800" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontSize=26;fontStyle=1;align=center" value="ReflexionTemporalMemorySuccessAgentRAG: General Architecture" vertex="1">
+          <mxGeometry height="45" width="1000" x="400" y="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="user" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=16;fontStyle=1" value="User Question" vertex="1">
+          <mxGeometry height="75" width="190" x="60" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="query" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;fontStyle=1" value="Query Normalization&lt;br&gt;and Benchmark Profiler&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;task type, filters, profile settings&lt;/font&gt;" vertex="1">
+          <mxGeometry height="95" width="250" x="330" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="retrieval" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=15;fontStyle=1" value="Retrieval Module&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;top-k evidence chunks&lt;/font&gt;" vertex="1">
+          <mxGeometry height="85" width="230" x="670" y="145" as="geometry" />
+        </mxCell>
+        <mxCell id="generator" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=15;fontStyle=1" value="Answer Generator&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;question + evidence + memory guidance + reflection hint&lt;/font&gt;" vertex="1">
+          <mxGeometry height="95" width="300" x="990" y="140" as="geometry" />
+        </mxCell>
+
+        <mxCell id="corpus" parent="1" style="shape=cylinder3d;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14" value="Document Corpus / Vector Store&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;QReCC, RAGTruth, Legal corpus&lt;/font&gt;" vertex="1">
+          <mxGeometry height="105" width="250" x="660" y="310" as="geometry" />
+        </mxCell>
+
+        <mxCell id="critic" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=15;fontStyle=1" value="Critic Module&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;sufficiency, support, contradiction checks&lt;/font&gt;" vertex="1">
+          <mxGeometry height="85" width="285" x="1040" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="skeptic" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=15;fontStyle=1" value="Skeptic Guardrail&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;unsupported claims, false premise risk, correction action&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="285" x="1040" y="465" as="geometry" />
+        </mxCell>
+        <mxCell id="decision" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=15;fontStyle=1" value="Grounded&lt;br&gt;and sufficient?" vertex="1">
+          <mxGeometry height="135" width="180" x="1420" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="final" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=15;fontStyle=1" value="Final Grounded Answer&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;citations or abstention when needed&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="210" x="1540" y="165" as="geometry" />
+        </mxCell>
+
+        <mxCell id="reflection" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=15;fontStyle=1" value="Self-Reflection Controller&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;guidance for next attempt&lt;/font&gt;" vertex="1">
+          <mxGeometry height="85" width="285" x="990" y="660" as="geometry" />
+        </mxCell>
+
+        <mxCell id="memory" parent="1" style="shape=cylinder3d;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;fontStyle=1" value="Temporal Success Memory&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;verified episodes, reliability stats, hallucination risk&lt;/font&gt;" vertex="1">
+          <mxGeometry height="115" width="300" x="250" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="score" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;fontStyle=1" value="Memory Scoring&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;similarity x temporal decay x reliability x risk penalty&lt;/font&gt;" vertex="1">
+          <mxGeometry height="85" width="310" x="620" y="635" as="geometry" />
+        </mxCell>
+        <mxCell id="update" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;fontStyle=1" value="Memory Update&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;record episode outcome with success/risk metadata&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="310" x="1410" y="660" as="geometry" />
+        </mxCell>
+
+        <mxCell id="logger" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eeeeee;strokeColor=#666666;fontSize=14;fontStyle=1;dashed=1" value="Evaluation Logger / Trace Store&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;retrieved contexts, attempts, critic outputs, skeptic outputs, selected memories, final answer&lt;/font&gt;" vertex="1">
+          <mxGeometry height="85" width="620" x="610" y="900" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e1" edge="1" parent="1" source="user" style="endArrow=block;html=1;rounded=0;" target="query">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="query" style="endArrow=block;html=1;rounded=0;" target="retrieval">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="retrieval" style="endArrow=block;html=1;rounded=0;" target="generator">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="corpus" style="endArrow=block;html=1;rounded=0;" target="retrieval">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="generator" style="endArrow=block;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="critic">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="generator" style="endArrow=block;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="skeptic">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="critic" style="endArrow=block;html=1;rounded=0;" target="decision">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="skeptic" style="endArrow=block;html=1;rounded=0;" target="decision">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="decision" style="endArrow=block;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="final" value="Yes">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1510" y="205" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="decision" style="endArrow=block;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="reflection" value="No: revise">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1510" y="705" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="reflection" style="endArrow=block;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="generator">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1140" y="790" />
+              <mxPoint x="1140" y="285" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="memory" style="endArrow=block;html=1;rounded=0;" target="score">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" edge="1" parent="1" source="score" style="endArrow=block;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="generator">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="775" y="270" />
+              <mxPoint x="990" y="270" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e14" edge="1" parent="1" source="final" style="endArrow=block;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="update">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1645" y="705" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e15" edge="1" parent="1" source="update" style="endArrow=block;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="memory">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1565" y="830" />
+              <mxPoint x="400" y="830" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="l1" edge="1" parent="1" source="retrieval" style="endArrow=open;html=1;rounded=0;dashed=1;strokeColor=#666666;" target="logger">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="785" y="860" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l2" edge="1" parent="1" source="generator" style="endArrow=open;html=1;rounded=0;dashed=1;strokeColor=#666666;" target="logger">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l3" edge="1" parent="1" source="critic" style="endArrow=open;html=1;rounded=0;dashed=1;strokeColor=#666666;" target="logger">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l4" edge="1" parent="1" source="skeptic" style="endArrow=open;html=1;rounded=0;dashed=1;strokeColor=#666666;" target="logger">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l5" edge="1" parent="1" source="final" style="endArrow=open;html=1;rounded=0;dashed=1;strokeColor=#666666;" target="logger">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1645" y="940" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l6" edge="1" parent="1" source="score" style="endArrow=open;html=1;rounded=0;dashed=1;strokeColor=#666666;" target="logger">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

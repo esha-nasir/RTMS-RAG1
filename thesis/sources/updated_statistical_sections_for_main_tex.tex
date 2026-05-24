@@ -1,0 +1,88 @@
+% Paste these replacements into the main thesis .tex file.
+% Only the requested statistical-testing locations are included.
+
+% ---------------------------------------------------------------------
+% REPLACE Section 4.3 Evaluation Metrics with this full section.
+% ---------------------------------------------------------------------
+\section{Evaluation Metrics}
+The evaluation used metrics for both answer quality and hallucination behavior. Therefore, metrics related to hallucination were treated as the most important since the aim of this thesis is to reduce hallucination propagation in agentic RAG systems.
+The hallucination rate is the proportion of answers that contain unsupported or contradictory information. A lower hallucination rate indicates better fidelity to the provided evidence. The non-hallucination rate is the fraction of answers with no detected hallucination.
+For QReCC, the quality of the answers was assessed using token-level F1 and exact match. Token F1 measures the overlap between the generated answer and the reference answer, while exact match checks if the answer is identical to the reference or is entirely contained within the reference.
+The primary metrics for the legal-domain benchmark were accuracy, grounded rate, hallucination rate, abstention rate and retrieval hit rate. These metrics reflect whether the system is answering correctly, using the retrieved evidence, avoiding unsupported claims and retrieving the expected source context.
+Also memory ablations recorded the memory-hit rate. This is the percentage of times the with-memory system retrieved memory entries. This metric is necessary because we can only interpret the memory impact if memory was used during generation.
+Together, these metrics evaluate if the systems produce correct, grounded and non-hallucinated answers and if memory reuse helps or hinders the propagation of hallucination.
+
+\subsection{Statistical Uncertainty and Effect Size Reporting}
+To avoid interpreting single metric values as exact estimates, the main rate-based metrics are reported together with statistical uncertainty. For hallucination rate, non-hallucination rate, accuracy, grounded rate and abstention rate, 95\% Wilson binomial confidence intervals are used. Wilson intervals are preferable to the normal approximation for small evaluation sets and for rates close to 0 or 1.
+
+For a rate \( \hat{p}=k/n \), where \(k\) is the number of positive cases and \(n\) is the number of evaluated examples, the Wilson interval is computed as:
+
+\begin{equation}
+\frac{\hat{p} + \frac{z^2}{2n} \pm z
+\sqrt{\frac{\hat{p}(1-\hat{p})}{n} + \frac{z^2}{4n^2}}}
+{1+\frac{z^2}{n}},
+\end{equation}
+
+where \(z=1.96\) for a 95\% confidence interval. In addition to confidence intervals, hallucination reductions are reported as absolute risk reduction \((p_{\text{baseline}}-p_{\text{system}})\) and relative reduction \((p_{\text{baseline}}-p_{\text{system}})/p_{\text{baseline}}\).
+
+For answer F1, which is not a binary metric, paired bootstrap resampling is the appropriate test when per-example scores are available. The examples are sampled with replacement, the mean F1 difference between two systems is recomputed for each bootstrap sample, and the 2.5th and 97.5th percentiles form a 95\% confidence interval for the F1 difference. Since the reported tables mainly summarize aggregate F1 values, the present analysis emphasizes Wilson intervals and effect sizes for rate-based metrics, while repeated runs and full paired bootstrap testing are left as future validation.
+
+% ---------------------------------------------------------------------
+% INSERT after Table 4.1 in Section 4.5 Results on QReCC.
+% ---------------------------------------------------------------------
+Statistical uncertainty was estimated for the QReCC hallucination rates using 95\% Wilson confidence intervals. The intervals were: Vanilla RAG 0.58 \([0.442, 0.706]\), SelfRefineAgentRAG 0.62 \([0.482, 0.741]\), ReflexionAgentRAG 0.26 \([0.159, 0.396]\), Proposed with memory 0.28 \([0.175, 0.417]\), and Proposed without memory 0.18 \([0.098, 0.308]\).
+Compared with Vanilla RAG, the proposed no-memory configuration reduced the hallucination rate by 0.40 absolute points, corresponding to a relative reduction of 69.0\%. The proposed with-memory configuration reduced hallucination by 0.30 absolute points, corresponding to a relative reduction of 51.7\%. These effect sizes suggest that the proposed verification architecture provides a meaningful reduction in unsupported generation, although the confidence intervals also show that the sample size is still limited.
+
+The F1 values should be interpreted as aggregate answer-quality indicators rather than statistically decisive claims. The proposed configurations improved F1 from 0.3341 for Vanilla RAG to 0.5238 with memory and 0.5199 without memory, but a paired bootstrap over per-example F1 scores would be required to quantify the uncertainty of these differences.
+
+% ---------------------------------------------------------------------
+% INSERT after Table 4.2 in Section 4.6 Results on RAGTruth.
+% Also replace "The results of RAGTruth strongly support..." with the softer
+% sentence below.
+% ---------------------------------------------------------------------
+For RAGTruth, 95\% Wilson confidence intervals were also computed for the hallucination rates. The intervals were: VanillaRAG 0.30 \([0.191, 0.438]\), SelfRefineAgentRAG 0.24 \([0.143, 0.374]\), ReflexionAgentRAG 0.24 \([0.143, 0.374]\), Proposed with memory 0.00 \([0.000, 0.071]\), and Proposed without memory 0.00 \([0.000, 0.071]\). Relative to VanillaRAG, the proposed configurations reduced the observed hallucination rate by 0.30 absolute points. Although no hallucinations were detected for the proposed configurations in this run, the confidence interval does not imply that the true hallucination probability is exactly zero. Rather, it indicates that, under this sample size, the upper 95\% confidence bound remains approximately 0.071.
+
+The results of RAGTruth provide evidence in support of the proposed architecture. Vanilla RAG still generated hallucinated outputs, indicating that retrieved context alone does not guarantee faithfulness. ReflexionAgent and SelfRefineAgentRAG decreased hallucination compared to vanilla RAG, but both still produced hallucinated responses.
+
+% ---------------------------------------------------------------------
+% INSERT after Table 4.3 in Section 4.7 Results on the Legal Corpus.
+% ---------------------------------------------------------------------
+For the main 96-sample temporal legal setting, Wilson confidence intervals were computed for the principal rate metrics. Accuracy was 0.8958 with a 95\% CI of \([0.819, 0.942]\), grounded rate was 0.9583 with a 95\% CI of \([0.898, 0.984]\), hallucination rate was 0.0104 with a 95\% CI of \([0.002, 0.057]\), and abstention rate was 0.0312 with a 95\% CI of \([0.011, 0.088]\). These intervals show that the observed hallucination rate is low, but the small number of hallucination cases means that the estimate should still be interpreted with uncertainty.
+
+For the 20-sample extractive no-memory setting, the hallucination rate of 0.0000 has a Wilson upper bound of 0.161. This is an important caution for small legal subsets: observing no hallucinations in 20 examples does not prove that the true hallucination rate is zero. It only shows that no hallucinations were detected in that limited sample.
+
+% ---------------------------------------------------------------------
+% INSERT after Table 4.4 in Section 4.8 Ablation Study.
+% ---------------------------------------------------------------------
+The ablation rates were also interpreted with Wilson confidence intervals. In the strict setting, hallucination remained 0.10 both without and with memory, with a 95\% CI of \([0.043, 0.214]\). In the balanced setting, hallucination increased from 0.10 \([0.043, 0.214]\) to 0.12 \([0.056, 0.238]\), an absolute increase of 0.02. In the relaxed setting, hallucination increased from 0.10 \([0.043, 0.214]\) to 0.16 \([0.083, 0.285]\), an absolute increase of 0.06 and a relative increase of 60\%. In the safe skeptic setting, hallucination decreased from 0.08 \([0.032, 0.188]\) to 0.04 \([0.011, 0.135]\), an absolute reduction of 0.04 and a relative reduction of 50\%.
+
+These confidence intervals overlap, so the ablation should not be read as a definitive significance claim. The stronger conclusion is directional and mechanistic: relaxed memory reuse can improve lexical overlap while increasing unsupported content, whereas skeptic-filtered memory can reduce the observed hallucination rate at the cost of a small decrease in F1. A paired bootstrap over per-example F1 scores would be needed to test whether the F1 changes are stable.
+
+% ---------------------------------------------------------------------
+% REPLACE Table 4.8 Error analysis and limitations with this full table.
+% ---------------------------------------------------------------------
+\begin{table}[H]
+\centering
+\caption{Error analysis and limitations}
+\label{tab:error-limitations}
+\small
+\begin{tabularx}{\textwidth}{P{0.28\textwidth} Y}
+\toprule
+\thead{Limitation} & \thead{Explanation} \\
+\midrule
+Memory benefit is configuration-dependent & Different outcomes were produced under strict, balanced, relaxed and safe skeptic settings. This indicates that the memory needs to be carefully filtered before reuse. \\
+Broad memory reuse increases risk & Relaxed memory boosted hallucination from 0.10 to 0.16, showing that more memory use is not always better grounding. \\
+Safety-quality trade-off & Safe skeptic memory decreased hallucination from 0.08 to 0.04, and F1 from 0.6000 to 0.5886. More stringent verification might reduce the answer overlap a bit. \\
+Legal memory effect was limited & Legal with-memory and without-memory results were the same, indicating that memory had little measurable effect when evidence was already strong. \\
+Fixed-context evaluation & QReCC used fixed context, so the results evaluate grounded generation, not full retrieval ranking. \\
+Limited gold labels & Since adapted QReCC does not have gold hallucination annotations, hallucination rates should be taken as detector-based estimates. \\
+Single-run evaluation & Most experiments reported were run once per configuration. Future repeated runs should report mean and standard deviation. \\
+Statistical uncertainty & The study reports Wilson confidence intervals and effect sizes for the main rate metrics. However, the sample sizes are still limited and most experiments are single-run evaluations, so the results should be validated with repeated runs and paired bootstrap tests for F1. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+% ---------------------------------------------------------------------
+% REPLACE only the single-run limitation paragraph in Chapter 5.3 with this.
+% ---------------------------------------------------------------------
+Another limitation is that most experiments were performed as single-run evaluations for each configuration. Although confidence intervals and effect sizes were reported for the main rate-based metrics, single-run evaluation does not measure run-to-run variation caused by stochastic generation. Future experiments should repeat each configuration across several runs or random seeds and report the mean and standard deviation for hallucination rate, answer F1, exact match, groundedness, abstention rate and memory-hit rate. Paired bootstrap confidence intervals should also be reported for F1 differences when per-example scores are available.

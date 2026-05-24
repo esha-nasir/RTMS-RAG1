@@ -1,0 +1,38 @@
+{
+  "config": {
+    "backend": "selfrefine",
+    "benchmark_family": "ragtruth",
+    "use_reflexion": false,
+    "disable_memory": true,
+    "max_iters": 1,
+    "max_samples": 100,
+    "top_k": 3,
+    "hallucination_source": "final_answer",
+    "detection_target": "auto"
+  },
+  "total_records": 100,
+  "generation": {
+    "hallucination_rate": 0.22,
+    "non_hallucination_rate": 0.78,
+    "source_counts": {
+      "detector": 100
+    }
+  },
+  "notes": [
+    "detection_target=auto evaluates reference_response when gold response hallucination labels are present, so hallucination_detection can be identical across backends."
+  ],
+  "hallucination_detection": {
+    "accuracy": 0.55,
+    "precision": 0.05,
+    "recall": 0.037,
+    "f1": 0.0426,
+    "confusion_matrix": {
+      "tp": 1,
+      "fp": 19,
+      "fn": 26,
+      "tn": 54
+    },
+    "gold_positive_rate": 0.27,
+    "predicted_positive_rate": 0.2
+  }
+}

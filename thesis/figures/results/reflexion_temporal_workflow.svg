@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1200" viewBox="0 0 1600 1200" role="img" aria-labelledby="title desc">
+  <title id="title">ReflexionTemporalMemorySuccessAgentRAG Workflow</title>
+  <desc id="desc">Block diagram showing retrieval, reranking, temporal memory scoring, reflexion critique and retry loop, and memory updates.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f6f2e8"/>
+      <stop offset="100%" stop-color="#e5efe9"/>
+    </linearGradient>
+    <linearGradient id="header" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#173b3f"/>
+      <stop offset="100%" stop-color="#23555b"/>
+    </linearGradient>
+    <linearGradient id="primary" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fffdf8"/>
+      <stop offset="100%" stop-color="#f0f5f2"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8f2f3"/>
+      <stop offset="100%" stop-color="#d8ece3"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#173b3f" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#2f4f4f"/>
+    </marker>
+    <style>
+      .title { font: 700 34px Georgia, 'Times New Roman', serif; fill: #173b3f; }
+      .subtitle { font: 400 18px Georgia, 'Times New Roman', serif; fill: #406268; }
+      .box-title { font: 700 20px Georgia, 'Times New Roman', serif; fill: #173b3f; }
+      .box-body { font: 400 16px Georgia, 'Times New Roman', serif; fill: #27484e; }
+      .small { font: 400 14px Georgia, 'Times New Roman', serif; fill: #355960; }
+      .pill { font: 700 15px Georgia, 'Times New Roman', serif; fill: #173b3f; }
+      .section { font: 700 18px Georgia, 'Times New Roman', serif; fill: #173b3f; letter-spacing: 0.6px; }
+      .line { stroke: #2f4f4f; stroke-width: 3.5; fill: none; marker-end: url(#arrow); }
+      .soft-line { stroke: #57777c; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
+      .dashed { stroke-dasharray: 9 8; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="1200" fill="url(#bg)"/>
+  <rect x="40" y="36" width="1520" height="90" rx="26" fill="url(#header)" filter="url(#shadow)"/>
+  <text x="75" y="90" fill="#f8fbfa" style="font:700 36px Georgia, 'Times New Roman', serif;">ReflexionTemporalMemorySuccessAgentRAG</text>
+  <text x="75" y="118" fill="#dcebea" style="font:400 18px Georgia, 'Times New Roman', serif;">Grounded legal RAG with temporal memory, Bayesian-style reliability, critique, and retry</text>
+
+  <text class="section" x="85" y="185">INPUT AND RETRIEVAL</text>
+  <text class="section" x="570" y="185">MEMORY AND PROMPTING</text>
+  <text class="section" x="1070" y="185">REFLEXION LOOP AND OUTPUT</text>
+
+  <rect x="80" y="210" width="250" height="110" rx="24" fill="url(#primary)" stroke="#6a8a8f" stroke-width="2" filter="url(#shadow)"/>
+  <text class="box-title" x="110" y="255">1. User Question</text>
+  <text class="box-body" x="110" y="285">Legal query enters the system</text>
+  <text class="small" x="110" y="307">Question, benchmark row, task type</text>
+
+  <rect x="80" y="390" width="250" height="120" rx="24" fill="url(#primary)" stroke="#6a8a8f" stroke-width="2" filter="url(#shadow)"/>
+  <text class="box-title" x="110" y="435">2. Task Routing</text>
+  <text class="box-body" x="110" y="465">Grounded QA, extractive QA,</text>
+  <text class="box-body" x="110" y="487">hallucination check, or no-RAG</text>
+
+  <rect x="80" y="585" width="250" height="145" rx="24" fill="url(#accent)" stroke="#6a8a8f" stroke-width="2" filter="url(#shadow)"/>
+  <text class="box-title" x="110" y="630">3. Evidence Retrieval</text>
+  <text class="box-body" x="110" y="660">Local corpus, Pinecone, or hybrid</text>
+  <text class="box-body" x="110" y="682">Top-k chunks or windows fetched</text>
+  <text class="small" x="110" y="708">Can be disabled for no-RAG baseline</text>
+
+  <rect x="80" y="795" width="250" height="170" rx="24" fill="url(#accent)" stroke="#6a8a8f" stroke-width="2" filter="url(#shadow)"/>
+  <text class="box-title" x="110" y="840">4. Evidence Reranking</text>
+  <text class="box-body" x="110" y="870">Lexical rerank</text>
+  <text class="box-body" x="110" y="892">Document/span rerank</text>
+  <text class="box-body" x="110" y="914">Optional LLM rerank</text>
+  <text class="small" x="110" y="942">Select primary evidence for answering</text>
+
+  <rect x="510" y="210" width="300" height="145" rx="24" fill="url(#primary)" stroke="#6a8a8f" stroke-width="2" filter="url(#shadow)"/>
+  <text class="box-title" x="540" y="255">5. Memory Retrieval</text>
+  <text class="box-body" x="540" y="285">Load prior episodes from temporal memory</text>
+  <text class="box-body" x="540" y="307">Filter by task, file, success, and risk</text>
+  <text class="small" x="540" y="333">Grounded QA uses stricter same-task filtering</text>
+
+  <rect x="510" y="410" width="300" height="235" rx="24" fill="url(#accent)" stroke="#6a8a8f" stroke-width="2" filter="url(#shadow)"/>
+  <text class="box-title" x="540" y="455">6. Memory Scoring</text>
+  <text class="box-body" x="540" y="485">Similarity to current question</text>
+  <text class="box-body" x="540" y="507">Task or file match bonus</text>
+  <text class="box-body" x="540" y="529">Temporal recency weighting</text>
+  <text class="box-body" x="540" y="551">Hallucination-risk penalty</text>
+  <text class="box-body" x="540" y="573">Reliability = alpha / (alpha + beta)</text>
+  <text class="small" x="540" y="605">Top memories are injected only if they look trustworthy</text>
+
+  <rect x="510" y="720" width="300" height="170" rx="24" fill="url(#primary)" stroke="#6a8a8f" stroke-width="2" filter="url(#shadow)"/>
+  <text class="box-title" x="540" y="765">7. Prompt Construction</text>
+  <text class="box-body" x="540" y="795">Question + retrieved evidence</text>
+  <text class="box-body" x="540" y="817">Top memory reflections + hints</text>
+  <text class="box-body" x="540" y="839">Task-aware answer instructions</text>
+  <text class="small" x="540" y="867">Concise grounded answers for grounded_qa</text>
+
+  <rect x="1010" y="210" width="310" height="130" rx="24" fill="url(#primary)" stroke="#6a8a8f" stroke-width="2" filter="url(#shadow)"/>
+  <text class="box-title" x="1040" y="255">8. First Answer</text>
+  <text class="box-body" x="1040" y="285">Generate extractive or grounded answer</text>
+  <text class="small" x="1040" y="311">Abstain if evidence is insufficient</text>
+
+  <rect x="1010" y="395" width="310" height="145" rx="24" fill="url(#accent)" stroke="#6a8a8f" stroke-width="2" filter="url(#shadow)"/>
+  <text class="box-title" x="1040" y="440">9. Critic</text>
+  <text class="box-body" x="1040" y="470">Check groundedness, sufficiency,</text>
+  <text class="box-body" x="1040" y="492">and task-specific answer quality</text>
+  <text class="small" x="1040" y="518">Grounded QA no longer over-penalizes concise answers</text>
+
+  <rect x="1010" y="610" width="310" height="220" rx="24" fill="url(#primary)" stroke="#6a8a8f" stroke-width="2" filter="url(#shadow)"/>
+  <text class="box-title" x="1040" y="655">10. Reflexion Loop</text>
+  <text class="box-body" x="1040" y="685">If sufficient: keep answer</text>
+  <text class="box-body" x="1040" y="707">If not: critique + self-reflect</text>
+  <text class="box-body" x="1040" y="729">Retry with wider retrieval if needed</text>
+  <text class="box-body" x="1040" y="751">Preserve abstention on weak evidence</text>
+  <text class="small" x="1040" y="783">Stops early when answer is already good enough</text>
+
+  <rect x="1010" y="910" width="310" height="115" rx="24" fill="url(#accent)" stroke="#6a8a8f" stroke-width="2" filter="url(#shadow)"/>
+  <text class="box-title" x="1040" y="955">11. Final Output</text>
+  <text class="box-body" x="1040" y="985">Answer + cited evidence + trace</text>
+
+  <rect x="1360" y="395" width="180" height="170" rx="24" fill="url(#primary)" stroke="#6a8a8f" stroke-width="2" filter="url(#shadow)"/>
+  <text class="box-title" x="1390" y="438">12. Memory Update</text>
+  <text class="box-body" x="1390" y="468">Save episode</text>
+  <text class="box-body" x="1390" y="490">Update success/failure</text>
+  <text class="box-body" x="1390" y="512">Adjust alpha/beta</text>
+  <text class="box-body" x="1390" y="534">Refresh risk stats</text>
+
+  <rect x="1360" y="650" width="180" height="175" rx="24" fill="url(#accent)" stroke="#6a8a8f" stroke-width="2" filter="url(#shadow)"/>
+  <text class="box-title" x="1390" y="694">Why It Helps</text>
+  <text class="box-body" x="1390" y="724">Retrieval grounds answers</text>
+  <text class="box-body" x="1390" y="746">Memory reuses good lessons</text>
+  <text class="box-body" x="1390" y="768">Critique catches weak drafts</text>
+  <text class="box-body" x="1390" y="790">Temporal scoring reduces noisy memory</text>
+
+  <path class="line" d="M205 320 L205 390"/>
+  <path class="line" d="M205 510 L205 585"/>
+  <path class="line" d="M205 730 L205 795"/>
+  <path class="line" d="M330 650 L510 650"/>
+  <path class="line" d="M660 355 L660 410"/>
+  <path class="line" d="M660 645 L660 720"/>
+  <path class="line" d="M810 805 L1010 805"/>
+  <path class="line" d="M1165 340 L1165 395"/>
+  <path class="line" d="M1165 540 L1165 610"/>
+  <path class="line" d="M1165 830 L1165 910"/>
+  <path class="line" d="M1320 470 L1360 470"/>
+  <path class="line" d="M1450 565 L1450 650"/>
+
+  <path class="soft-line dashed" d="M1320 720 C1390 720, 1390 575, 1320 575"/>
+  <text class="pill" x="1336" y="610">retry if needed</text>
+
+  <path class="soft-line dashed" d="M1360 482 C1335 482, 1335 280, 1320 280"/>
+  <text class="pill" x="1300" y="255">store outcome</text>
+
+  <rect x="120" y="1045" width="1360" height="105" rx="26" fill="#fffaf0" stroke="#8aa5a4" stroke-width="2"/>
+  <text class="box-title" x="150" y="1088">Core idea</text>
+  <text class="box-body" x="150" y="1118">Retrieve legal evidence, score and filter prior memories, answer with task-aware prompting, critique and retry only when useful, then update memory using success/failure signals.</text>
+  <text class="small" x="150" y="1142">This makes the system more grounded than plain generation, while temporal memory tries to reuse good prior lessons without repeating bad ones.</text>
+</svg>

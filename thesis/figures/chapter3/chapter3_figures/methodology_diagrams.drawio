@@ -1,0 +1,154 @@
+<mxfile host="app.diagrams.net" modified="2026-04-26T12:00:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="architecture-page" name="Figure 3.1 Architecture">
+    <mxGraphModel dx="1500" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title1" value="Figure 3.1. Architecture of the Proposed Temporal Success-Aware Reflexion RAG System" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=24;fontStyle=1;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="180" y="20" width="1240" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="layer1" value="Evidence Retrieval Layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=20;fontStyle=1;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="40" y="90" width="340" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="layer2" value="Temporal Success-Aware Episodic Memory Layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=20;fontStyle=1;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="430" y="90" width="340" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="layer3" value="Answer Generation Layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=20;fontStyle=1;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="820" y="90" width="340" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="layer4" value="Verification and Reflexion Layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=20;fontStyle=1;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="1210" y="90" width="340" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="r1" value="Question and source metadata" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffaf2;strokeColor=#d6b656;fontSize=16;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="70" y="210" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="r2" value="Lexical or hybrid retrieval" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffaf2;strokeColor=#d6b656;fontSize=16;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="70" y="330" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="r3" value="Candidate evidence passages" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffaf2;strokeColor=#d6b656;fontSize=16;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="70" y="450" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="r4" value="Reranking and evidence selection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffaf2;strokeColor=#d6b656;fontSize=16;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="70" y="570" width="280" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="m1" value="Stored reasoning episodes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f9ff;strokeColor=#6c8ebf;fontSize=16;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="460" y="210" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="m2" value="Task-aware filtering" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f9ff;strokeColor=#6c8ebf;fontSize=16;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="460" y="330" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="m3" value="Memory scoring: similarity, recency, reliability, risk, locality" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f9ff;strokeColor=#6c8ebf;fontSize=16;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="460" y="450" width="280" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="m4" value="Selected memory guidance" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f9ff;strokeColor=#6c8ebf;fontSize=16;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="460" y="600" width="280" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="g1" value="Benchmark-aware prompting" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4fbf4;strokeColor=#82b366;fontSize=16;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="850" y="210" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="g2" value="Prompt construction from evidence and memory" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4fbf4;strokeColor=#82b366;fontSize=16;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="850" y="330" width="280" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="g3" value="Draft answer generation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4fbf4;strokeColor=#82b366;fontSize=16;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="850" y="470" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="g4" value="Candidate grounded answer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4fbf4;strokeColor=#82b366;fontSize=16;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="850" y="600" width="280" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="v1" value="Adversarial skeptic" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5f5;strokeColor=#b85450;fontSize=16;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="210" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="v2" value="Critic evaluation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5f5;strokeColor=#b85450;fontSize=16;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="330" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="v3" value="Reflection guidance and retry if needed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5f5;strokeColor=#b85450;fontSize=16;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="470" width="280" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="v4" value="Episode outcome and memory update" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5f5;strokeColor=#b85450;fontSize=16;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="610" width="280" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="r1" target="r2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="r2" target="r3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="r3" target="r4"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="r4" target="g2"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="m1" target="m2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="m2" target="m3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="m3" target="m4"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="m4" target="g2"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="e9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="g1" target="g2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="g2" target="g3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="g3" target="g4"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="g4" target="v1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="e13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="v1" target="v2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="v2" target="v3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;" edge="1" parent="1" source="v3" target="g2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="v2" target="v4"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;" edge="1" parent="1" source="v4" target="m1"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="workflow-page" name="Figure 3.2 Workflow">
+    <mxGraphModel dx="1500" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="wtitle" value="Figure 3.2. Runtime Workflow of the Proposed Reflexion and Memory System" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=24;fontStyle=1;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="140" y="20" width="1120" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="w1" value="Start: receive question" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=16;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="520" y="90" width="220" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="w2" value="Retrieve evidence" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffaf2;strokeColor=#d6b656;fontSize=16;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="500" y="220" width="260" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="w3" value="Retrieve and score candidate memories" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f9ff;strokeColor=#6c8ebf;fontSize=16;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="470" y="340" width="320" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="w4" value="Build prompt from evidence and memory" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4fbf4;strokeColor=#82b366;fontSize=16;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="470" y="470" width="320" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="w5" value="Generate draft answer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4fbf4;strokeColor=#82b366;fontSize=16;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="500" y="600" width="260" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="w6" value="Skeptic reviews answer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5f5;strokeColor=#b85450;fontSize=16;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="500" y="720" width="260" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="w7" value="Critic evaluates groundedness" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5f5;strokeColor=#b85450;fontSize=16;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="480" y="840" width="300" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="w8" value="Is the answer sufficiently grounded?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=16;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="470" y="970" width="320" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="w9" value="Return final answer and trace" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="500" y="1150" width="260" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="w10" value="Update episodic memory" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=16;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="500" y="1270" width="260" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="w11" value="Generate reflection guidance and retry" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5f5;strokeColor=#b85450;fontSize=16;fontFamily=Georgia;" vertex="1" parent="1">
+          <mxGeometry x="860" y="995" width="300" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="we1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="w1" target="w2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="we2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="w2" target="w3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="we3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="w3" target="w4"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="we4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="w4" target="w5"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="we5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="w5" target="w6"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="we6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="w6" target="w7"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="we7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="w7" target="w8"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="we8" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="w8" target="w9"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="we9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="w9" target="w10"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="we10" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="w8" target="w11"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="we11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;" edge="1" parent="1" source="w11" target="w4"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

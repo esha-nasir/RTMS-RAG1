@@ -1,0 +1,39 @@
+{
+  "config": {
+    "backend": "temporal",
+    "benchmark_family": "ragtruth",
+    "use_reflexion": true,
+    "disable_memory": false,
+    "max_iters": 3,
+    "max_samples": 50,
+    "top_k": 3,
+    "hallucination_source": "auto",
+    "detection_target": "auto"
+  },
+  "total_records": 50,
+  "generation": {
+    "hallucination_rate": 0.0,
+    "non_hallucination_rate": 1.0,
+    "source_counts": {
+      "detector": 50
+    }
+  },
+  "notes": [
+    "hallucination_source=auto uses the final-answer detector for fair cross-backend generation-rate comparisons; temporal skeptic values are still written per row.",
+    "detection_target=auto evaluates reference_response when gold response hallucination labels are present, so hallucination_detection can be identical across backends."
+  ],
+  "hallucination_detection": {
+    "accuracy": 0.52,
+    "precision": 0.0909,
+    "recall": 0.0667,
+    "f1": 0.0769,
+    "confusion_matrix": {
+      "tp": 1,
+      "fp": 10,
+      "fn": 14,
+      "tn": 25
+    },
+    "gold_positive_rate": 0.3,
+    "predicted_positive_rate": 0.22
+  }
+}

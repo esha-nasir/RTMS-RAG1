@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1260" viewBox="0 0 1800 1260" role="img" aria-labelledby="title desc">
+  <title id="title">Figure 3.1 Thesis-Style Architecture of the Proposed Temporal Success-Aware Reflexion RAG System</title>
+  <desc id="desc">Four-layer architecture diagram aligned with the methodology chapter: evidence retrieval, temporal success-aware episodic memory, answer generation, and verification with Reflexion.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f6f0e8"/>
+      <stop offset="100%" stop-color="#e7f0ea"/>
+    </linearGradient>
+    <linearGradient id="head" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#15383c"/>
+      <stop offset="100%" stop-color="#2d5e63"/>
+    </linearGradient>
+    <linearGradient id="panelA" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fffdfa"/>
+      <stop offset="100%" stop-color="#eff6f2"/>
+    </linearGradient>
+    <linearGradient id="panelB" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#edf4f8"/>
+      <stop offset="100%" stop-color="#e1f0e7"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#15393d" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#35595f"/>
+    </marker>
+    <style>
+      .title { font: 700 36px Georgia, 'Times New Roman', serif; fill: #f8fbfb; }
+      .subtitle { font: 400 18px Georgia, 'Times New Roman', serif; fill: #d7e8e8; }
+      .layer-title { font: 700 24px Georgia, 'Times New Roman', serif; fill: #183f44; }
+      .layer-sub { font: 400 15px Georgia, 'Times New Roman', serif; fill: #46696d; }
+      .box-title { font: 700 20px Georgia, 'Times New Roman', serif; fill: #183f44; }
+      .box-body { font: 400 16px Georgia, 'Times New Roman', serif; fill: #2b4f54; }
+      .small { font: 400 14px Georgia, 'Times New Roman', serif; fill: #476a6f; }
+      .formula { font: 700 16px Georgia, 'Times New Roman', serif; fill: #22484d; }
+      .arrow { stroke: #35595f; stroke-width: 3.2; fill: none; marker-end: url(#arrow); }
+      .soft { stroke: #6f8f93; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+      .dash { stroke-dasharray: 10 8; }
+    </style>
+  </defs>
+
+  <rect width="1800" height="1260" fill="url(#bg)"/>
+  <rect x="40" y="32" width="1720" height="96" rx="24" fill="url(#head)" filter="url(#shadow)"/>
+  <text x="72" y="86" class="title">Figure 3.1 Architecture of the Proposed Temporal Success-Aware Reflexion RAG System</text>
+  <text x="72" y="114" class="subtitle">Diagram aligned with Chapter 3: evidence retrieval, episodic memory, answer generation, and verification with Reflexion</text>
+
+  <rect x="60" y="170" width="380" height="980" rx="28" fill="url(#panelA)" stroke="#819b9f" stroke-width="2.2" filter="url(#shadow)"/>
+  <rect x="490" y="170" width="380" height="980" rx="28" fill="url(#panelB)" stroke="#819b9f" stroke-width="2.2" filter="url(#shadow)"/>
+  <rect x="920" y="170" width="380" height="980" rx="28" fill="url(#panelA)" stroke="#819b9f" stroke-width="2.2" filter="url(#shadow)"/>
+  <rect x="1350" y="170" width="390" height="980" rx="28" fill="url(#panelB)" stroke="#819b9f" stroke-width="2.2" filter="url(#shadow)"/>
+
+  <text x="90" y="220" class="layer-title">Evidence Retrieval Layer</text>
+  <text x="90" y="246" class="layer-sub">Section 3.3</text>
+
+  <text x="520" y="220" class="layer-title">Temporal Success-Aware Episodic</text>
+  <text x="520" y="248" class="layer-title">Memory Layer</text>
+  <text x="520" y="274" class="layer-sub">Sections 3.6-3.9</text>
+
+  <text x="950" y="220" class="layer-title">Answer Generation Layer</text>
+  <text x="950" y="246" class="layer-sub">Sections 3.2 and 3.4</text>
+
+  <text x="1380" y="220" class="layer-title">Verification and Reflexion Layer</text>
+  <text x="1380" y="246" class="layer-sub">Section 3.5</text>
+
+  <rect x="95" y="300" width="310" height="105" rx="22" fill="#fffaf2" stroke="#7f999d" stroke-width="2" filter="url(#shadow)"/>
+  <text x="125" y="345" class="box-title">Question and Metadata</text>
+  <text x="125" y="375" class="box-body">User query with optional</text>
+  <text x="125" y="397" class="box-body">case_no and file_name</text>
+
+  <rect x="95" y="450" width="310" height="130" rx="22" fill="#f1f7f3" stroke="#7f999d" stroke-width="2" filter="url(#shadow)"/>
+  <text x="125" y="495" class="box-title">Retrieval Mode Selection</text>
+  <text x="125" y="525" class="box-body">Local lexical retrieval</text>
+  <text x="125" y="547" class="box-body">or hybrid dense plus lexical</text>
+
+  <rect x="95" y="625" width="310" height="160" rx="22" fill="#fffaf2" stroke="#7f999d" stroke-width="2" filter="url(#shadow)"/>
+  <text x="125" y="670" class="box-title">Candidate Evidence Retrieval</text>
+  <text x="125" y="700" class="box-body">Top-k context passages</text>
+  <text x="125" y="722" class="box-body">from indexed corpus</text>
+  <text x="125" y="748" class="small">supports offline and hybrid modes</text>
+
+  <rect x="95" y="835" width="310" height="190" rx="22" fill="#f1f7f3" stroke="#7f999d" stroke-width="2" filter="url(#shadow)"/>
+  <text x="125" y="880" class="box-title">Reranking and Evidence Selection</text>
+  <text x="125" y="910" class="box-body">BM25-style overlap</text>
+  <text x="125" y="932" class="box-body">exact phrase and quote bonus</text>
+  <text x="125" y="954" class="box-body">case and file metadata bonus</text>
+  <text x="125" y="976" class="box-body">document-span and local-window rerank</text>
+
+  <rect x="525" y="300" width="310" height="120" rx="22" fill="#fffaf2" stroke="#7f999d" stroke-width="2" filter="url(#shadow)"/>
+  <text x="555" y="345" class="box-title">Memory Store</text>
+  <text x="555" y="375" class="box-body">Past QA episodes with reflection,</text>
+  <text x="555" y="397" class="box-body">outcome statistics, and metadata</text>
+
+  <rect x="525" y="470" width="310" height="165" rx="22" fill="#eef5fa" stroke="#7f999d" stroke-width="2" filter="url(#shadow)"/>
+  <text x="555" y="515" class="box-title">Conservative Filtering</text>
+  <text x="555" y="545" class="box-body">Task compatibility</text>
+  <text x="555" y="567" class="box-body">minimum score threshold</text>
+  <text x="555" y="589" class="box-body">meaningful reflection text</text>
+  <text x="555" y="611" class="box-body">stricter grounded-mode constraints</text>
+
+  <rect x="525" y="685" width="310" height="220" rx="22" fill="#fffaf2" stroke="#7f999d" stroke-width="2" filter="url(#shadow)"/>
+  <text x="555" y="730" class="box-title">Memory Scoring</text>
+  <text x="555" y="760" class="box-body">similarity x temporal_weight x</text>
+  <text x="555" y="782" class="box-body">reliability x risk_penalty x</text>
+  <text x="555" y="804" class="box-body">(1 + metadata_bonus)</text>
+  <text x="555" y="840" class="formula">reliability = alpha / (alpha + beta)</text>
+  <text x="555" y="870" class="formula">temporal_weight = exp(-age_days / decay_days)</text>
+
+  <rect x="525" y="955" width="310" height="145" rx="22" fill="#eef5fa" stroke="#7f999d" stroke-width="2" filter="url(#shadow)"/>
+  <text x="555" y="1000" class="box-title">Selected Memory Guidance</text>
+  <text x="555" y="1030" class="box-body">Top-ranked reflections injected</text>
+  <text x="555" y="1052" class="box-body">into the current prompt</text>
+  <text x="555" y="1078" class="small">recent, reliable, low-risk memories preferred</text>
+
+  <rect x="955" y="300" width="310" height="135" rx="22" fill="#fffaf2" stroke="#7f999d" stroke-width="2" filter="url(#shadow)"/>
+  <text x="985" y="345" class="box-title">Benchmark-Aware Prompting</text>
+  <text x="985" y="375" class="box-body">Role and task instructions</text>
+  <text x="985" y="397" class="box-body">citation and abstention rules</text>
+  <text x="985" y="419" class="box-body">benchmark profile selection</text>
+
+  <rect x="955" y="485" width="310" height="160" rx="22" fill="#eef5fa" stroke="#7f999d" stroke-width="2" filter="url(#shadow)"/>
+  <text x="985" y="530" class="box-title">Prompt Construction</text>
+  <text x="985" y="560" class="box-body">Retrieved evidence</text>
+  <text x="985" y="582" class="box-body">selected memory guidance</text>
+  <text x="985" y="604" class="box-body">current iteration guidance</text>
+  <text x="985" y="626" class="box-body">final answer instructions</text>
+
+  <rect x="955" y="695" width="310" height="150" rx="22" fill="#fffaf2" stroke="#7f999d" stroke-width="2" filter="url(#shadow)"/>
+  <text x="985" y="740" class="box-title">Draft Answer Generation</text>
+  <text x="985" y="770" class="box-body">Grounded, extractive, or</text>
+  <text x="985" y="792" class="box-body">conversational answer output</text>
+  <text x="985" y="818" class="small">depends on task profile</text>
+
+  <rect x="955" y="895" width="310" height="140" rx="22" fill="#eef5fa" stroke="#7f999d" stroke-width="2" filter="url(#shadow)"/>
+  <text x="985" y="940" class="box-title">Candidate Final Answer</text>
+  <text x="985" y="970" class="box-body">Answer plus evidence trace</text>
+  <text x="985" y="992" class="box-body">forwarded for verification</text>
+
+  <rect x="1385" y="300" width="320" height="140" rx="22" fill="#fffaf2" stroke="#7f999d" stroke-width="2" filter="url(#shadow)"/>
+  <text x="1415" y="345" class="box-title">Adversarial Skeptic</text>
+  <text x="1415" y="375" class="box-body">Flags unsupported claims,</text>
+  <text x="1415" y="397" class="box-body">counter-evidence, and false premises</text>
+
+  <rect x="1385" y="490" width="320" height="145" rx="22" fill="#eef5fa" stroke="#7f999d" stroke-width="2" filter="url(#shadow)"/>
+  <text x="1415" y="535" class="box-title">Critic</text>
+  <text x="1415" y="565" class="box-body">Checks support, sufficiency,</text>
+  <text x="1415" y="587" class="box-body">task fit, and need for revision</text>
+
+  <polygon points="1545,690 1690,780 1545,870 1400,780" fill="#fff8ef" stroke="#7f999d" stroke-width="2" filter="url(#shadow)"/>
+  <text x="1474" y="774" class="box-title">Sufficiently grounded?</text>
+  <text x="1517" y="800" class="small">critic decision</text>
+
+  <rect x="1385" y="925" width="320" height="170" rx="22" fill="#fffaf2" stroke="#7f999d" stroke-width="2" filter="url(#shadow)"/>
+  <text x="1415" y="970" class="box-title">Reflection Guidance and Retry</text>
+  <text x="1415" y="1000" class="box-body">self-reflection</text>
+  <text x="1415" y="1022" class="box-body">retrieval-level reflection</text>
+  <text x="1415" y="1044" class="box-body">answer-level reflection</text>
+  <text x="1415" y="1066" class="box-body">retry with updated guidance</text>
+
+  <rect x="1370" y="1125" width="350" height="85" rx="22" fill="#fff8ef" stroke="#8ea8a8" stroke-width="2"/>
+  <text x="1400" y="1175" class="box-body">Episode outcome updates memory reliability and hallucination-risk estimates</text>
+
+  <path class="arrow" d="M250 405 L250 450"/>
+  <path class="arrow" d="M250 580 L250 625"/>
+  <path class="arrow" d="M250 785 L250 835"/>
+
+  <path class="arrow" d="M405 715 L525 715"/>
+  <path class="arrow" d="M680 420 L680 470"/>
+  <path class="arrow" d="M680 635 L680 685"/>
+  <path class="arrow" d="M680 905 L680 955"/>
+
+  <path class="arrow" d="M835 1025 L955 1025"/>
+  <path class="arrow" d="M1110 435 L1110 485"/>
+  <path class="arrow" d="M1110 645 L1110 695"/>
+  <path class="arrow" d="M1110 845 L1110 895"/>
+
+  <path class="arrow" d="M1265 965 L1385 965"/>
+  <path class="arrow" d="M1545 440 L1545 490"/>
+  <path class="arrow" d="M1545 635 L1545 690"/>
+
+  <path class="arrow" d="M1545 870 L1545 925"/>
+  <text x="1572" y="905" class="small">No</text>
+
+  <path class="soft dash" d="M1385 1010 C1300 1010, 1295 785, 1265 785"/>
+  <text x="1280" y="828" class="small">retry path</text>
+
+  <path class="soft dash" d="M1545 870 L1545 1125"/>
+  <text x="1570" y="1120" class="small">Yes</text>
+
+  <path class="soft dash" d="M1545 1125 C1545 1185, 980 1185, 680 1100"/>
+  <text x="1125" y="1210" class="small">store episode and update reused memory outcomes</text>
+
+  <rect x="95" y="1070" width="1170" height="80" rx="20" fill="#fff8ef" stroke="#8ea8a8" stroke-width="2"/>
+  <text x="125" y="1118" class="box-body">Reading order: evidence retrieval produces grounded context, episodic memory supplies trusted prior guidance, answer generation synthesizes the response, and verification with Reflexion decides whether to accept or revise the answer.</text>
+</svg>

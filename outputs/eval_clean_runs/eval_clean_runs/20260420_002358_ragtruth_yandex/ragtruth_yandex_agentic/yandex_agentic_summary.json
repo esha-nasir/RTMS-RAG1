@@ -1,0 +1,37 @@
+{
+  "config": {
+    "backend": "yandex_agentic_rag",
+    "benchmark_type": "ragtruth",
+    "benchmark_file": "/Users/eshanasir/ReflexionTemporalMemorySuccessAgentRAG/data/ragtruth_fixed_context/ragtruth_fixed_context_benchmark.jsonl",
+    "top_k": 1,
+    "judge_qa": true,
+    "max_samples": 100
+  },
+  "qa": {
+    "total": 100,
+    "correct": 78,
+    "accuracy": 0.78,
+    "answer_f1": 0.4211,
+    "exact_match_rate": 0.0,
+    "grounded": 82,
+    "grounded_rate": 0.82,
+    "hallucinated": 0,
+    "hallucination_rate": 0.0,
+    "abstained": 18,
+    "abstention_rate": 0.18
+  },
+  "hallucination_detection": {
+    "accuracy": 0.73,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "confusion_matrix": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 27,
+      "tn": 73
+    },
+    "gold_positive_rate": 0.27,
+    "predicted_positive_rate": 0.0
+  }
+}

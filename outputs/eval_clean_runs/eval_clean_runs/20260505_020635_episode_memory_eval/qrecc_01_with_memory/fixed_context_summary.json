@@ -1,0 +1,39 @@
+{
+  "config": {
+    "backend": "temporal",
+    "benchmark_family": "qrecc",
+    "use_reflexion": true,
+    "disable_memory": false,
+    "max_iters": 1,
+    "max_samples": 0,
+    "top_k": 1,
+    "hallucination_source": "final_answer",
+    "detection_target": "auto"
+  },
+  "total_records": 49,
+  "generation": {
+    "hallucination_rate": 0.1837,
+    "non_hallucination_rate": 0.8163,
+    "source_counts": {
+      "detector": 49
+    }
+  },
+  "qa_quality": {
+    "answer_f1": 0.491,
+    "exact_match_rate": 0.0408,
+    "scored_records": 49,
+    "native_retrieval_metrics_available": false,
+    "native_rewrite_metrics_available": false,
+    "notes": "This fixed-context QReCC adapter supports conversational QA quality metrics. Native QReCC retrieval/rewrite metrics require rewrite targets and retrieval ids, which are not present in this adapted JSONL."
+  },
+  "retrieval_proxy": {
+    "available": true,
+    "scored_records": 49,
+    "retrieval_hit_rate": 1.0,
+    "notes": "This is a fixed-context source-hit proxy using preserved gold evidence ids. It is not native QReCC retrieval ranking evaluation such as Recall@k or MRR."
+  },
+  "hallucination_detection": {
+    "available": false,
+    "notes": "Response-level precision/recall/F1 requires gold hallucination labels. This adapted QReCC file does not include gold hallucination annotations, so only generation hallucination rate is reported."
+  }
+}

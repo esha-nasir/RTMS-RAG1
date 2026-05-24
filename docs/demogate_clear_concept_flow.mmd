@@ -1,0 +1,64 @@
+%% DemoGate-RAG clear concept flow
+%% Recommended for thesis Chapter 3.
+flowchart TD
+    Q["1. Question or Benchmark Sample<br/>User query from RAGTruth, QReCC, Legal QA, or real user"]
+
+    Q --> B["2. Benchmark and System Mode<br/>Select dataset profile and backend"]
+
+    B --> M{"3. Which System Runs?"}
+
+    M -->|Baseline| V["Vanilla RAG<br/>retrieval + LLM answer"]
+    M -->|Baseline| S["SelfRefineAgentRAG<br/>draft + refinement"]
+    M -->|Proposed| D["DemoGate-RAG<br/>Reflexion + Skeptic + Temporal Success Memory"]
+
+    V --> R["4. Retrieve Evidence<br/>Get top-k relevant context chunks"]
+    S --> R
+    D --> R
+
+    R --> E["5. Evidence Context<br/>The only factual source the answer should use"]
+
+    D --> ML["6. Load Past Memory Episodes<br/>Previous questions, answers, reflections, success/failure"]
+
+    ML --> MS["7. Score Memories<br/>similarity x temporal decay x reliability x risk penalty x metadata"]
+
+    MS --> MG["8. Select Useful Memory Guidance<br/>Keep successful, recent, relevant, low-risk memories"]
+
+    E --> P["9. Build Prompt<br/>question + evidence + selected memory + reflection guidance"]
+    MG --> P
+    V --> P
+    S --> P
+
+    P --> L["10. LLM Generates Draft Answer<br/>Ollama / YandexGPT / Gemini"]
+
+    L --> SK["11. Skeptic Guardrail<br/>Check unsupported claims and false-premise risk"]
+
+    SK --> T["12. Grounded Trimming<br/>Remove or weaken unsupported answer parts"]
+
+    T --> C["13. Critic Evaluation<br/>Is the answer grounded, sufficient, and useful?"]
+
+    C --> OK{"14. Is Answer Good Enough?"}
+
+    OK -->|No| RF["15. Reflection<br/>Explain the weakness and create retry guidance"]
+    RF --> P
+
+    OK -->|Yes| FA["16. Final Answer<br/>Returned as benchmark prediction or user response"]
+
+    FA --> U["17. Memory Update<br/>Save episode, success score, hallucination risk, alpha/beta stats"]
+
+    U --> ML
+
+    FA --> O["18. Evaluation Output<br/>hallucination rate, F1, accuracy, groundedness, trace"]
+
+    classDef input fill:#E8F3FF,stroke:#245A9A,stroke-width:2px,color:#0B2545;
+    classDef baseline fill:#FFF2D8,stroke:#A36B00,stroke-width:2px,color:#3D2A00;
+    classDef proposed fill:#EAF8EA,stroke:#257A3E,stroke-width:3px,color:#0F351A;
+    classDef memory fill:#F4ECFF,stroke:#6D38A8,stroke-width:2px,color:#24103A;
+    classDef verify fill:#FFECEF,stroke:#B3263B,stroke-width:2px,color:#3B0A12;
+    classDef output fill:#F0F3F5,stroke:#44515C,stroke-width:2px,color:#111820;
+
+    class Q,B,M input;
+    class V,S baseline;
+    class D proposed;
+    class ML,MS,MG,U memory;
+    class SK,T,C,OK,RF verify;
+    class FA,O output;

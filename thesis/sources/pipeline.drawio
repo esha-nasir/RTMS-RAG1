@@ -1,0 +1,33 @@
+<mxfile host="app.diagrams.net" modified="2026-05-03T00:00:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="pipeline" name="Verification Pipeline">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Self-Reflective Verification Pipeline" style="text;html=1;strokeColor=none;fillColor=none;fontSize=24;fontStyle=1" vertex="1" parent="1"><mxGeometry x="470" y="30" width="560" height="40" as="geometry"/></mxCell>
+        <mxCell id="s1" value="1. Receive question" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=15;fontStyle=1" vertex="1" parent="1"><mxGeometry x="60" y="150" width="180" height="70" as="geometry"/></mxCell>
+        <mxCell id="s2" value="2. Retrieve evidence&lt;br&gt;top-k contexts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=15;fontStyle=1" vertex="1" parent="1"><mxGeometry x="300" y="150" width="190" height="70" as="geometry"/></mxCell>
+        <mxCell id="s3" value="3. Retrieve reliable memory&lt;br&gt;temporal success scoring" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;fontStyle=1" vertex="1" parent="1"><mxGeometry x="550" y="150" width="220" height="70" as="geometry"/></mxCell>
+        <mxCell id="s4" value="4. Generate candidate answer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=15;fontStyle=1" vertex="1" parent="1"><mxGeometry x="830" y="150" width="210" height="70" as="geometry"/></mxCell>
+        <mxCell id="s5" value="5. Check support&lt;br&gt;critic + skeptic" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=15;fontStyle=1" vertex="1" parent="1"><mxGeometry x="1100" y="150" width="210" height="70" as="geometry"/></mxCell>
+        <mxCell id="d1" value="Supported?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=15;fontStyle=1" vertex="1" parent="1"><mxGeometry x="1115" y="330" width="180" height="120" as="geometry"/></mxCell>
+        <mxCell id="s6" value="6. Build reflection guidance&lt;br&gt;unsupported claims, missing evidence, next action" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;fontStyle=1" vertex="1" parent="1"><mxGeometry x="745" y="350" width="270" height="90" as="geometry"/></mxCell>
+        <mxCell id="s7" value="7. Retry generation&lt;br&gt;max 3 attempts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=15;fontStyle=1" vertex="1" parent="1"><mxGeometry x="470" y="360" width="200" height="70" as="geometry"/></mxCell>
+        <mxCell id="s8" value="8. Produce final answer&lt;br&gt;grounded answer or safe abstention" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=15;fontStyle=1" vertex="1" parent="1"><mxGeometry x="1100" y="580" width="240" height="85" as="geometry"/></mxCell>
+        <mxCell id="s9" value="9. Update memory&lt;br&gt;success, failure, hallucination risk" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=15;fontStyle=1" vertex="1" parent="1"><mxGeometry x="760" y="585" width="250" height="80" as="geometry"/></mxCell>
+        <mxCell id="s10" value="10. Evaluation logging&lt;br&gt;hallucination rate, F1, propagation indicators" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;fontStyle=1" vertex="1" parent="1"><mxGeometry x="430" y="585" width="260" height="80" as="geometry"/></mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="s1" target="s2" style="endArrow=block;html=1;rounded=0;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="s2" target="s3" style="endArrow=block;html=1;rounded=0;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="s3" target="s4" style="endArrow=block;html=1;rounded=0;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="s4" target="s5" style="endArrow=block;html=1;rounded=0;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="s5" target="d1" style="endArrow=block;html=1;rounded=0;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" value="No" edge="1" parent="1" source="d1" target="s6" style="endArrow=block;html=1;rounded=0;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="s6" target="s7" style="endArrow=block;html=1;rounded=0;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="s7" target="s4" style="endArrow=block;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e9" value="Yes" edge="1" parent="1" source="d1" target="s8" style="endArrow=block;html=1;rounded=0;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="s8" target="s9" style="endArrow=block;html=1;rounded=0;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="s9" target="s10" style="endArrow=block;html=1;rounded=0;"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

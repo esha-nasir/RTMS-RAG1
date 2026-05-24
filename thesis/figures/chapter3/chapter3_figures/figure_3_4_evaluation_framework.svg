@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1100" viewBox="0 0 1700 1100" role="img" aria-labelledby="title desc">
+  <title id="title">Figure 3.4 Evaluation Framework</title>
+  <desc id="desc">Evaluation framework diagram showing benchmarks, system execution, generated answers, lexical metrics, judge-based metrics, and final comparative analysis.</desc>
+  <defs>
+    <linearGradient id="bg4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f7f2ea"/>
+      <stop offset="100%" stop-color="#e5efe9"/>
+    </linearGradient>
+    <linearGradient id="head4" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#12373c"/>
+      <stop offset="100%" stop-color="#2a5960"/>
+    </linearGradient>
+    <linearGradient id="box4a" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fffdf8"/>
+      <stop offset="100%" stop-color="#eef5f1"/>
+    </linearGradient>
+    <linearGradient id="box4b" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e7f1f5"/>
+      <stop offset="100%" stop-color="#ddede7"/>
+    </linearGradient>
+    <filter id="shadow4" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#15393d" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow4" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#32565c"/>
+    </marker>
+    <style>
+      .title { font: 700 36px Georgia, 'Times New Roman', serif; fill: #f8fbfb; }
+      .subtitle { font: 400 18px Georgia, 'Times New Roman', serif; fill: #d7e8e8; }
+      .box-title { font: 700 20px Georgia, 'Times New Roman', serif; fill: #183f44; }
+      .box-body { font: 400 16px Georgia, 'Times New Roman', serif; fill: #294d52; }
+      .small { font: 400 14px Georgia, 'Times New Roman', serif; fill: #42656a; }
+      .line { stroke: #32565c; stroke-width: 3.2; fill: none; marker-end: url(#arrow4); }
+    </style>
+  </defs>
+  <rect width="1700" height="1100" fill="url(#bg4)"/>
+  <rect x="40" y="32" width="1620" height="90" rx="24" fill="url(#head4)" filter="url(#shadow4)"/>
+  <text x="70" y="86" class="title">Figure 3.4 Evaluation Framework for the Comparative Experiments</text>
+  <text x="70" y="112" class="subtitle">From benchmark preparation to lexical scoring, judge-based scoring, and final result synthesis</text>
+
+  <rect x="80" y="190" width="320" height="170" rx="24" fill="url(#box4a)" stroke="#7c979a" stroke-width="2" filter="url(#shadow4)"/>
+  <text x="145" y="242" class="box-title">1. Benchmarks and Datasets</text>
+  <text x="120" y="274" class="box-body">LegalBenchRAG grounded</text>
+  <text x="120" y="300" class="box-body">LegalBenchRAG extractive</text>
+  <text x="120" y="326" class="box-body">RAGTruth fixed-context</text>
+  <text x="120" y="352" class="box-body">Custom temporal legal benchmark</text>
+
+  <rect x="470" y="190" width="320" height="170" rx="24" fill="url(#box4b)" stroke="#7c979a" stroke-width="2" filter="url(#shadow4)"/>
+  <text x="530" y="242" class="box-title">2. Shared Execution Setting</text>
+  <text x="510" y="274" class="box-body">Same benchmark rows</text>
+  <text x="510" y="300" class="box-body">Same retrieval budget</text>
+  <text x="510" y="326" class="box-body">Same max iteration limits</text>
+  <text x="510" y="352" class="box-body">Benchmark-specific memory isolation where needed</text>
+
+  <rect x="860" y="190" width="720" height="170" rx="24" fill="url(#box4a)" stroke="#7c979a" stroke-width="2" filter="url(#shadow4)"/>
+  <text x="1125" y="242" class="box-title">3. Evaluated Systems</text>
+  <text x="920" y="274" class="box-body">without_rag</text>
+  <text x="920" y="300" class="box-body">VanillaRAG</text>
+  <text x="920" y="326" class="box-body">selfRefineAgentRAG</text>
+  <text x="1220" y="274" class="box-body">reflexionAgentRAG</text>
+  <text x="1220" y="300" class="box-body">ReflexionTemporalMemorySuccessAgentRAG</text>
+
+  <rect x="610" y="455" width="480" height="120" rx="24" fill="url(#box4b)" stroke="#7c979a" stroke-width="2" filter="url(#shadow4)"/>
+  <text x="740" y="507" class="box-title">4. Generated Answers and Traces</text>
+  <text x="680" y="537" class="box-body">Answer text, evidence context, critic state, reflection trace, and abstention behavior</text>
+
+  <rect x="200" y="670" width="420" height="220" rx="24" fill="url(#box4a)" stroke="#7c979a" stroke-width="2" filter="url(#shadow4)"/>
+  <text x="332" y="722" class="box-title">5. Lexical Evaluation</text>
+  <text x="270" y="760" class="box-body">Exact or contained match</text>
+  <text x="270" y="790" class="box-body">Token-level F1</text>
+  <text x="270" y="820" class="box-body">Answer overlap with reference</text>
+
+  <rect x="760" y="670" width="520" height="260" rx="24" fill="url(#box4b)" stroke="#7c979a" stroke-width="2" filter="url(#shadow4)"/>
+  <text x="923" y="722" class="box-title">6. Judge-Based Evaluation</text>
+  <text x="835" y="760" class="box-body">Grounded rate</text>
+  <text x="835" y="790" class="box-body">Hallucination rate</text>
+  <text x="835" y="820" class="box-body">Factual hallucination rate</text>
+  <text x="835" y="850" class="box-body">Faithfulness hallucination rate</text>
+  <text x="835" y="880" class="box-body">Abstention rate</text>
+
+  <rect x="520" y="980" width="620" height="80" rx="24" fill="#fff8ef" stroke="#8ea8a8" stroke-width="2" filter="url(#shadow4)"/>
+  <text x="695" y="1027" class="box-title">7. Comparative Analysis and Result Tables</text>
+
+  <path class="line" d="M400 275 L470 275"/>
+  <path class="line" d="M790 275 L860 275"/>
+  <path class="line" d="M760 360 L760 455"/>
+  <path class="line" d="M760 575 L410 670"/>
+  <path class="line" d="M900 575 L1020 670"/>
+  <path class="line" d="M410 890 L650 980"/>
+  <path class="line" d="M1020 930 L1020 980"/>
+
+  <rect x="1260" y="720" width="280" height="170" rx="24" fill="#fffaf1" stroke="#8ea8a8" stroke-width="2" filter="url(#shadow4)"/>
+  <text x="1338" y="770" class="box-title">Output files</text>
+  <text x="1300" y="802" class="box-body">master_comparison.csv</text>
+  <text x="1300" y="828" class="box-body">master_comparison.md</text>
+  <text x="1300" y="854" class="box-body">summary_metrics.json</text>
+  <text x="1300" y="880" class="box-body">judgment_metrics.csv</text>
+
+  <path class="line" d="M1140 1020 L1260 865"/>
+</svg>

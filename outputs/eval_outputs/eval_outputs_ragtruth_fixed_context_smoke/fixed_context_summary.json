@@ -1,0 +1,15 @@
+{
+  "config": {
+    "backend": "temporal",
+    "use_reflexion": true,
+    "disable_memory": false,
+    "max_iters": 3,
+    "max_samples": 10,
+    "top_k": 1
+  },
+  "total_records": 10,
+  "generation": {
+    "hallucination_rate": 0.0,
+    "non_hallucination_rate": 1.0
+  }
+}

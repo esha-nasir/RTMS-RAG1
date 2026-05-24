@@ -1,0 +1,204 @@
+% LaTeX-ready Chapter 3 with explicit figure insertion markers
+% Suggested preamble additions:
+% \usepackage{amsmath}
+% \usepackage{svg}
+% \usepackage{enumitem}
+% \usepackage{float}
+
+\chapter{Methodology}
+\label{chap:methodology}
+
+\section{Research Design}
+\label{sec:research-design}
+
+This study investigates whether temporal success-aware episodic memory can improve the performance of a Reflexion-based Retrieval-Augmented Generation system. The methodology is designed to evaluate not only answer quality, but also groundedness, hallucination reduction, and the selective reuse of previous reasoning episodes. The proposed system extends a standard RAG architecture with an iterative self-correction loop and a memory controller that prioritizes memories according to relevance, recency, prior success, and hallucination risk.
+
+The research follows an experimental systems approach. A working architecture is implemented and evaluated under controlled benchmark settings. Across all main comparisons, the same corpus, retrieval depth, model family, and decoding configuration are preserved unless a component is being deliberately ablated. This allows the contribution of the proposed memory mechanism to be isolated from unrelated implementation changes.
+
+The main research question is whether temporal success-aware episodic memory improves grounded answer quality and reduces hallucination compared with vanilla RAG, Reflexion-based RAG without memory, and simpler memory reuse baselines.
+
+\section{Overall System Architecture}
+\label{sec:overall-system-architecture}
+
+The proposed architecture contains four main layers: the evidence retrieval layer, the answer generation layer, the verification and Reflexion layer, and the temporal success-aware episodic memory layer. During inference, the system accepts a user question together with optional metadata such as \texttt{case\_no} and \texttt{file\_name}. The retrieval layer gathers relevant evidence passages, the memory layer selects useful past reasoning traces, the generation layer produces a candidate answer, and the verification layer decides whether the answer is sufficiently grounded or whether another refinement step is necessary.
+
+Unlike a conventional one-pass RAG pipeline, the proposed system treats answer generation as an iterative and adaptive process. It also treats prior reasoning episodes as selective knowledge sources rather than blindly reusable prompts.
+
+% [Insert Figure 3.1 here: Overall architecture of the proposed temporal success-aware Reflexion RAG system.]
+\begin{figure}[H]
+    \centering
+    \includesvg[width=\textwidth]{chapter3_figures/figure_3_1_methodology_architecture}
+    \caption{Overall architecture of the proposed temporal success-aware Reflexion RAG system.}
+    \label{fig:overall-architecture}
+\end{figure}
+
+\section{Retrieval Layer}
+\label{sec:retrieval-layer}
+
+The retrieval layer is responsible for selecting evidence passages that may support the answer. In the implementation, retrieval can operate either in local corpus mode or in hybrid mode. In local corpus mode, the system uses lexical retrieval over pre-segmented JSONL chunks, which is especially useful for deterministic offline experiments. In hybrid mode, the system combines dense retrieval with lexical candidate selection and then reranks the merged candidate set.
+
+The reranking procedure uses several signals, including semantic relevance, lexical overlap, exact phrase matching, quoted fragment matching, and metadata alignment such as case or file matches. Additional local-window and document-span reranking improve the precision of the final evidence set, especially for long legal or conversational documents. This layer is methodologically important because the later reasoning stages depend on the quality of the retrieved evidence.
+
+% [Reference Figure 3.1 here.]
+
+\section{Benchmark-Aware Prompting and Task Profiles}
+\label{sec:benchmark-aware-prompting}
+
+The system supports multiple benchmark families with different grounding requirements. Instead of using one static prompt for all tasks, it applies benchmark-aware task profiles that control role instructions, citation expectations, preference for primary evidence, and memory usage policy.
+
+For example, legal grounded QA requires more conservative evidence usage and often benefits from citation-oriented prompting, while conversational QA allows broader multi-context synthesis. This benchmark-aware prompt construction is part of the methodology because it ensures that evaluation conditions match the nature of each dataset and reduces prompt mismatch as a confounding factor.
+
+% [Reference Figure 3.1 here.]
+
+\section{Reflexion and Verification Mechanism}
+\label{sec:reflexion-and-verification}
+
+The proposed method uses an iterative Reflexion loop instead of a single-pass generator. Each iteration includes draft answer generation, adversarial skepticism, critic evaluation, reflection generation, and optional retry. The skeptic attempts to identify unsupported claims, counter-evidence, and false-premise risks. The critic then decides whether the current answer is sufficiently grounded and whether another iteration is justified.
+
+If the answer is weak, the system produces reflection guidance and performs another attempt, optionally with improved evidence focus or revised prompting. This mechanism improves groundedness and also creates interpretable reasoning traces that can later be analyzed. The system supports self-reflection, retrieval-level reflection, answer-level reflection, and episode-level reflection, with the latter becoming the reusable unit stored in memory.
+
+% [Insert Figure 3.2 here: Execution flow of answer generation, critic evaluation, reflection, and retry.]
+\begin{figure}[H]
+    \centering
+    \includesvg[width=0.8\textwidth]{chapter3_figures/figure_3_2_process_flowchart}
+    \caption{Execution flow of answer generation, critic evaluation, reflection, and retry.}
+    \label{fig:process-flow}
+\end{figure}
+
+\section{Temporal Success-Aware Episodic Memory}
+\label{sec:temporal-success-aware-memory}
+
+The central methodological contribution of this work is the temporal success-aware episodic memory controller. Its goal is to reuse previous reasoning episodes only when they are likely to help the current query. Each memory stores a past QA episode together with metadata such as the original question, task type, reflection, critic outcome, and success or failure statistics.
+
+Instead of ranking memories by semantic similarity alone, the system computes a composite score that combines similarity, temporal recency, reliability, hallucination-risk suppression, and metadata locality. In this way, a memory is treated as useful not simply because it looks similar, but because it has also proven trustworthy over time.
+
+% [Reference Figure 3.1 here.]
+
+\section{Reliability and Risk Estimation}
+\label{sec:reliability-and-risk-estimation}
+
+The reliability of each memory item is estimated using accumulated success and failure counts. Each memory begins with prior parameters and is updated after reuse. Reliability is defined as the ratio of accumulated success weight to total weight, which gives a stable trust estimate even when the memory has only been reused a small number of times.
+
+Hallucination risk is estimated from prior failures. A memory with a higher history of failure is downweighted by a penalty factor. This prevents the system from repeatedly reusing reflections that may sound relevant but tend to produce unsupported answers.
+
+% [Reference Figure 3.1 here.]
+% [Optional: insert equation block here for reliability and risk penalty.]
+
+\begin{equation}
+\label{eq:reliability-marker}
+\mathrm{reliability} = \frac{\alpha}{\alpha + \beta}
+\end{equation}
+
+\begin{equation}
+\label{eq:risk-penalty-marker}
+\mathrm{risk\_penalty} = \max\bigl(\varepsilon, 1 - \lambda \cdot \mathrm{hallucination\_risk}\bigr)
+\end{equation}
+
+\section{Memory Filtering and Conservative Reuse}
+\label{sec:memory-filtering}
+
+Before a memory is inserted into the prompt, it is filtered conservatively. Filtering criteria include task compatibility, minimum score threshold, presence of usable reflection text, and outcome quality. In stricter grounded settings, the system can also require lower hallucination risk and stronger metadata alignment.
+
+This filtering stage is methodologically important because memory can produce both positive transfer and harmful transfer. Conservative filtering reduces the chance that superficially similar but unreliable episodes contaminate the current answer.
+
+% [Reference Figure 3.1 here.]
+
+\section{Memory Update Procedure}
+\label{sec:memory-update-procedure}
+
+After the final answer is accepted or the episode terminates, the system writes a new memory entry and updates the replay statistics of any reused memories. Successful episodes increase success-related statistics and reliability, while unsuccessful episodes increase failure-related statistics and hallucination risk. Replay updates are recorded in an append-only statistics log, which makes the adaptation process auditable.
+
+This update mechanism turns memory into an adaptive component of the architecture rather than a static prompt repository.
+
+% [Reference Figure 3.1 here.]
+% [Reference Figure 3.2 here.]
+
+\section{Experimental Conditions and Baselines}
+\label{sec:experimental-conditions-and-baselines}
+
+The experimental methodology compares several systems under matched settings. These include vanilla RAG, a simple refinement baseline, Reflexion-based RAG with verbal memory, a temporal architecture without memory reuse, and the full temporal success-aware memory system proposed in this work.
+
+This progression allows each architectural contribution to be evaluated separately. Vanilla RAG measures the baseline retrieval-plus-generation behavior, Reflexion isolates iterative correction, and the final model tests whether principled memory scoring improves groundedness and reduces hallucination beyond simpler alternatives.
+
+% [Insert Figure 3.3 here: Comparative pipeline of baseline systems and the proposed method.]
+\begin{figure}[H]
+    \centering
+    \includesvg[width=\textwidth]{chapter3_figures/figure_3_3_comparative_pipeline}
+    \caption{Comparative pipeline of baseline systems and the proposed method.}
+    \label{fig:comparative-pipeline}
+\end{figure}
+
+\section{Datasets}
+\label{sec:datasets}
+
+The evaluation uses multiple benchmark families to test different aspects of grounded question answering. QReCC fixed-context data is used to study conversational continuity and memory reuse across related questions. RAGTruth fixed-context data is used to study hallucination control and strict grounding. LegalBench-style local legal QA tasks are used to assess source-sensitive and metadata-sensitive reasoning.
+
+These datasets are complementary because they stress different failure modes: conversational drift, unsupported generation, and document-grounded legal reasoning.
+
+% [No figure required here. A dataset table is better if needed.]
+
+\section{Evaluation Metrics}
+\label{sec:evaluation-metrics}
+
+The evaluation uses several metric groups. Answer quality is measured through exact match and token-level F1 where reference answers are available. Groundedness-oriented metrics include grounded answer rate, hallucination rate, unsupported answer rate, and abstention rate. Retrieval is assessed using retrieval hit rate or source-hit proxy measures, especially in adapted fixed-context settings. In addition, the methodology tracks agent behavior such as iteration count, memory hit count, average memory score, average reliability of reused memories, and average hallucination risk.
+
+Using multiple metric families is necessary because a grounded QA system should not be judged only by textual similarity to a gold answer. It should also be evaluated by whether its answer is supported by evidence and whether its reasoning process is stable.
+
+% [Insert Figure 3.4 here: Evaluation framework linking datasets, baselines, metrics, and analysis outputs.]
+\begin{figure}[H]
+    \centering
+    \includesvg[width=\textwidth]{chapter3_figures/figure_3_4_evaluation_framework}
+    \caption{Evaluation framework linking datasets, baselines, metrics, and analysis outputs.}
+    \label{fig:evaluation-framework}
+\end{figure}
+
+\section{Ablation Study}
+\label{sec:ablation-study}
+
+To understand which parts of the memory controller are responsible for performance gains, the full system is compared with ablated variants. These include versions without temporal decay, without reliability weighting, without hallucination-risk penalty, without metadata bonus, with similarity-only memory retrieval, and with memory disabled entirely.
+
+This ablation design allows the contribution of each scoring component to be measured directly rather than inferring importance from the final model alone.
+
+% [No figure required. Use an ablation table.]
+
+\section{Statistical Analysis}
+\label{sec:statistical-analysis}
+
+For final reporting, the methodology should include uncertainty-aware comparison rather than single-run point estimates alone. Recommended practice includes reporting mean scores, confidence intervals, and paired comparisons against the strongest baseline. If the evaluation is performed sequentially with online memory reuse, repeated runs with different sample orders should also be considered to measure order sensitivity.
+
+This improves the rigor of the conclusions and separates exploratory findings from confirmatory evidence.
+
+% [No figure required.]
+
+\section{Failure Analysis}
+\label{sec:failure-analysis}
+
+Quantitative evaluation is supplemented by manual failure analysis. Error categories include retrieval failure, evidence-ignored failure, unsupported inference, over-abstention, negative memory transfer, and critic or skeptic error. This analysis is important because memory-augmented systems may fail in more subtle ways than standard RAG systems.
+
+A representative sample of failures should be discussed to show when memory helped, when it harmed, and whether the verification loop correctly handled uncertain evidence.
+
+% [No figure required. Use examples or a failure table.]
+
+\section{Threats to Validity}
+\label{sec:threats-to-validity}
+
+Several threats to validity must be acknowledged. These include LLM judge bias, benchmark leakage through memory reuse, order sensitivity in online evaluation, retrieval dependence, prompt sensitivity, and provider variability. These factors may influence the observed results if not carefully controlled.
+
+The methodology addresses these risks by using matched settings across baselines, benchmark-aware profiles, auditable replay logs, and explicit separation between exploratory and final evaluation.
+
+% [No figure required.]
+
+\section{Reproducibility}
+\label{sec:reproducibility}
+
+The implementation supports reproducibility through explicit environment settings, JSONL-based benchmark inputs, benchmark-specific memory files, append-only memory statistics, and saved evaluation summaries. Each run records configuration details such as backend, retrieval depth, memory usage status, and benchmark family, making it possible to reconstruct the experimental conditions.
+
+Reproducibility is treated as part of the methodology because transparent configuration control strengthens the reliability of the empirical claims.
+
+% [No figure required.]
+
+\section{Chapter Summary}
+\label{sec:chapter-summary}
+
+This chapter presented the methodology of a Reflexion-based RAG architecture enhanced with temporal success-aware episodic memory. The system combines evidence retrieval, benchmark-aware prompting, iterative verification, and adaptive memory reuse to improve grounded answer quality and reduce hallucination. The evaluation design then tests this contribution through controlled baseline comparison, ablation analysis, and multi-level metric reporting across conversational, grounded, and legal QA settings.
+

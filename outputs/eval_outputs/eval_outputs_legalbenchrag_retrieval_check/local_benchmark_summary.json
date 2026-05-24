@@ -1,0 +1,26 @@
+{
+  "config": {
+    "use_reflexion": false,
+    "max_iters": 3,
+    "top_k": 3,
+    "judge_qa": false,
+    "qa_only": false,
+    "retrieval_only": true,
+    "disable_retrieval": false,
+    "benchmark_name": "default",
+    "qa_benchmark_file": "qa_draft_benchmark.jsonl",
+    "retrieval_benchmark_file": "retrieval_benchmark.jsonl"
+  },
+  "retrieval_strict": {
+    "total": 20,
+    "correct": 0,
+    "accuracy": 0.0,
+    "parse_failures": 0
+  },
+  "retrieval_soft": {
+    "total": 20,
+    "correct": 0,
+    "accuracy": 0.0,
+    "parse_failures": 0
+  }
+}

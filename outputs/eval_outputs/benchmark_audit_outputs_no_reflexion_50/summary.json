@@ -1,0 +1,26 @@
+{
+  "benchmark": {
+    "total_rows": 200,
+    "clear_rows": 145,
+    "review_rows": 30,
+    "exclude_rows": 25,
+    "top_flags": {
+      "gold_answer_page_noise": 38,
+      "gold_chunk_page_noise": 38,
+      "gold_chunk_header_heavy": 16,
+      "gold_answer_header_heavy": 13,
+      "gold_answer_footnote_heavy": 7,
+      "gold_answer_too_short": 2
+    }
+  },
+  "predictions": {
+    "total_predictions": 50,
+    "incorrect_predictions": 34,
+    "failure_categories": {
+      "benchmark/gold mismatch": 2,
+      "retrieval miss": 25,
+      "grounded but wrong": 6,
+      "answer too broad": 1
+    }
+  }
+}

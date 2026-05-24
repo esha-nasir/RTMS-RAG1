@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1180" viewBox="0 0 1800 1180" role="img" aria-labelledby="title desc">
+  <title id="title">ReflexionTemporalMemorySuccessAgentRAG Block Diagram</title>
+  <desc id="desc">A full architecture block diagram showing question input, retrieval, reranking, memory scoring, Reflexion loop, answer generation, and memory updates.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f7f2ea"/>
+      <stop offset="100%" stop-color="#e3efe9"/>
+    </linearGradient>
+    <linearGradient id="header" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#11363a"/>
+      <stop offset="100%" stop-color="#2b5b61"/>
+    </linearGradient>
+    <linearGradient id="boxA" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fffdf9"/>
+      <stop offset="100%" stop-color="#eef5f1"/>
+    </linearGradient>
+    <linearGradient id="boxB" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8f1f5"/>
+      <stop offset="100%" stop-color="#dff0e8"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#15393d" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#32565c"/>
+    </marker>
+    <style>
+      .title { font: 700 38px Georgia, 'Times New Roman', serif; fill: #f8fbfb; }
+      .subtitle { font: 400 18px Georgia, 'Times New Roman', serif; fill: #d6e7e7; }
+      .section { font: 700 19px Georgia, 'Times New Roman', serif; fill: #163d41; letter-spacing: 0.6px; }
+      .box-title { font: 700 20px Georgia, 'Times New Roman', serif; fill: #163d41; }
+      .box-body { font: 400 16px Georgia, 'Times New Roman', serif; fill: #2a4d52; }
+      .small { font: 400 14px Georgia, 'Times New Roman', serif; fill: #42656a; }
+      .label { font: 700 15px Georgia, 'Times New Roman', serif; fill: #21454a; }
+      .line { stroke: #32565c; stroke-width: 3.4; fill: none; marker-end: url(#arrow); }
+      .soft { stroke: #69878b; stroke-width: 2.6; fill: none; marker-end: url(#arrow); }
+      .dash { stroke-dasharray: 10 8; }
+    </style>
+  </defs>
+
+  <rect width="1800" height="1180" fill="url(#bg)"/>
+  <rect x="40" y="32" width="1720" height="92" rx="24" fill="url(#header)" filter="url(#shadow)"/>
+  <text x="72" y="84" class="title">ReflexionTemporalMemorySuccessAgentRAG</text>
+  <text x="72" y="112" class="subtitle">Legal RAG pipeline with retrieval, temporal success memory, Bayesian-style reliability, and Reflexion-based self-correction</text>
+
+  <text x="88" y="170" class="section">INPUT + RETRIEVAL</text>
+  <text x="690" y="170" class="section">TEMPORAL MEMORY SYSTEM</text>
+  <text x="1295" y="170" class="section">REFLEXION + GENERATION</text>
+
+  <rect x="80" y="205" width="280" height="110" rx="22" fill="url(#boxA)" stroke="#7c979a" stroke-width="2" filter="url(#shadow)"/>
+  <text x="112" y="250" class="box-title">1. User Question / Task</text>
+  <text x="112" y="280" class="box-body">Legal question, benchmark row,</text>
+  <text x="112" y="302" class="box-body">task type, and metadata enter</text>
+
+  <rect x="80" y="380" width="280" height="120" rx="22" fill="url(#boxA)" stroke="#7c979a" stroke-width="2" filter="url(#shadow)"/>
+  <text x="112" y="425" class="box-title">2. Task Routing</text>
+  <text x="112" y="455" class="box-body">grounded_qa / extractive_qa /</text>
+  <text x="112" y="477" class="box-body">hallucination_detection / no-RAG</text>
+
+  <rect x="80" y="565" width="280" height="140" rx="22" fill="url(#boxB)" stroke="#7c979a" stroke-width="2" filter="url(#shadow)"/>
+  <text x="112" y="610" class="box-title">3. Evidence Retrieval</text>
+  <text x="112" y="640" class="box-body">Local corpus, Pinecone, or hybrid</text>
+  <text x="112" y="662" class="box-body">Top-k candidate chunks/windows</text>
+  <text x="112" y="688" class="small">Can be disabled for true no-RAG</text>
+
+  <rect x="80" y="780" width="280" height="170" rx="22" fill="url(#boxB)" stroke="#7c979a" stroke-width="2" filter="url(#shadow)"/>
+  <text x="112" y="825" class="box-title">4. Retrieval Reranking</text>
+  <text x="112" y="855" class="box-body">Lexical rerank</text>
+  <text x="112" y="877" class="box-body">Span or sentence rerank</text>
+  <text x="112" y="899" class="box-body">Optional LLM rerank</text>
+  <text x="112" y="925" class="small">Select primary evidence block</text>
+
+  <rect x="625" y="205" width="310" height="125" rx="22" fill="url(#boxA)" stroke="#7c979a" stroke-width="2" filter="url(#shadow)"/>
+  <text x="657" y="250" class="box-title">5. Memory Store</text>
+  <text x="657" y="280" class="box-body">Past episodes with question, answer,</text>
+  <text x="657" y="302" class="box-body">reflection, success/failure stats</text>
+
+  <rect x="625" y="380" width="310" height="170" rx="22" fill="url(#boxB)" stroke="#7c979a" stroke-width="2" filter="url(#shadow)"/>
+  <text x="657" y="425" class="box-title">6. Memory Filtering</text>
+  <text x="657" y="455" class="box-body">Task-type match</text>
+  <text x="657" y="477" class="box-body">Same file or case preference</text>
+  <text x="657" y="499" class="box-body">Success-only filters where needed</text>
+  <text x="657" y="521" class="box-body">Grounded QA uses stricter filtering</text>
+
+  <rect x="625" y="610" width="310" height="220" rx="22" fill="url(#boxA)" stroke="#7c979a" stroke-width="2" filter="url(#shadow)"/>
+  <text x="657" y="655" class="box-title">7. Memory Scoring</text>
+  <text x="657" y="685" class="box-body">semantic similarity</text>
+  <text x="657" y="707" class="box-body">+ recency decay</text>
+  <text x="657" y="729" class="box-body">+ case/file bonus</text>
+  <text x="657" y="751" class="box-body">- hallucination-risk penalty</text>
+  <text x="657" y="773" class="box-body">+ reliability weight</text>
+  <text x="657" y="805" class="small">Reliability uses Beta-style expectation:</text>
+  <text x="657" y="827" class="label">alpha / (alpha + beta)</text>
+
+  <rect x="625" y="885" width="310" height="150" rx="22" fill="url(#boxB)" stroke="#7c979a" stroke-width="2" filter="url(#shadow)"/>
+  <text x="657" y="930" class="box-title">8. Memory Selection</text>
+  <text x="657" y="960" class="box-body">Top-N trusted memory traces are</text>
+  <text x="657" y="982" class="box-body">passed into the answer prompt</text>
+  <text x="657" y="1008" class="small">Usually tighter for grounded QA</text>
+
+  <rect x="1230" y="205" width="330" height="135" rx="22" fill="url(#boxA)" stroke="#7c979a" stroke-width="2" filter="url(#shadow)"/>
+  <text x="1262" y="250" class="box-title">9. Prompt Construction</text>
+  <text x="1262" y="280" class="box-body">Question + primary evidence +</text>
+  <text x="1262" y="302" class="box-body">supporting evidence + memory hints</text>
+  <text x="1262" y="324" class="box-body">+ task-aware output instructions</text>
+
+  <rect x="1230" y="395" width="330" height="120" rx="22" fill="url(#boxB)" stroke="#7c979a" stroke-width="2" filter="url(#shadow)"/>
+  <text x="1262" y="440" class="box-title">10. First Answer</text>
+  <text x="1262" y="470" class="box-body">Generate grounded or extractive</text>
+  <text x="1262" y="492" class="box-body">answer from retrieved evidence</text>
+
+  <rect x="1230" y="575" width="330" height="135" rx="22" fill="url(#boxA)" stroke="#7c979a" stroke-width="2" filter="url(#shadow)"/>
+  <text x="1262" y="620" class="box-title">11. Critic</text>
+  <text x="1262" y="650" class="box-body">Check support, sufficiency,</text>
+  <text x="1262" y="672" class="box-body">task fit, and obvious answer issues</text>
+  <text x="1262" y="698" class="small">Grounded QA allows concise answers</text>
+
+  <rect x="1230" y="770" width="330" height="210" rx="22" fill="url(#boxB)" stroke="#7c979a" stroke-width="2" filter="url(#shadow)"/>
+  <text x="1262" y="815" class="box-title">12. Reflexion Loop</text>
+  <text x="1262" y="845" class="box-body">If sufficient: stop early</text>
+  <text x="1262" y="867" class="box-body">If weak: critique + self-reflect</text>
+  <text x="1262" y="889" class="box-body">Retry with updated guidance</text>
+  <text x="1262" y="911" class="box-body">Optionally widen retrieval</text>
+  <text x="1262" y="933" class="box-body">Preserve abstention if evidence is weak</text>
+
+  <rect x="1620" y="395" width="120" height="150" rx="22" fill="url(#boxA)" stroke="#7c979a" stroke-width="2" filter="url(#shadow)"/>
+  <text x="1644" y="438" class="box-title">13.</text>
+  <text x="1644" y="464" class="box-title">Final</text>
+  <text x="1644" y="490" class="box-title">Answer</text>
+  <text x="1644" y="520" class="small">answer, evidence, trace</text>
+
+  <rect x="1620" y="625" width="120" height="220" rx="22" fill="url(#boxB)" stroke="#7c979a" stroke-width="2" filter="url(#shadow)"/>
+  <text x="1644" y="670" class="box-title">14.</text>
+  <text x="1644" y="696" class="box-title">Memory</text>
+  <text x="1644" y="722" class="box-title">Update</text>
+  <text x="1644" y="752" class="box-body">save episode</text>
+  <text x="1644" y="774" class="box-body">update alpha</text>
+  <text x="1644" y="796" class="box-body">update beta</text>
+  <text x="1644" y="818" class="box-body">refresh risk</text>
+
+  <path class="line" d="M220 315 L220 380"/>
+  <path class="line" d="M220 500 L220 565"/>
+  <path class="line" d="M220 705 L220 780"/>
+  <path class="line" d="M360 650 L625 650"/>
+  <path class="line" d="M780 330 L780 380"/>
+  <path class="line" d="M780 550 L780 610"/>
+  <path class="line" d="M780 830 L780 885"/>
+  <path class="line" d="M935 960 L1230 960"/>
+  <path class="line" d="M1395 340 L1395 395"/>
+  <path class="line" d="M1395 515 L1395 575"/>
+  <path class="line" d="M1395 710 L1395 770"/>
+  <path class="line" d="M1560 455 L1620 455"/>
+  <path class="line" d="M1680 545 L1680 625"/>
+
+  <path class="soft dash" d="M1560 875 C1635 875, 1635 730, 1560 730"/>
+  <text x="1578" y="796" class="label">retry if needed</text>
+
+  <path class="soft dash" d="M1620 735 C1580 735, 1580 270, 935 270"/>
+  <text x="1406" y="248" class="label">store outcome for future queries</text>
+
+  <rect x="1025" y="1040" width="715" height="100" rx="22" fill="#fff8ef" stroke="#8ea8a8" stroke-width="2"/>
+  <text x="1055" y="1083" class="box-title">Core contribution</text>
+  <text x="1055" y="1111" class="box-body">The system does not treat memory traces equally. It prefers recent, successful, low-risk memories and filters them by task type, which reduces harmful cross-example interference.</text>
+
+  <rect x="80" y="1040" width="890" height="100" rx="22" fill="#fff8ef" stroke="#8ea8a8" stroke-width="2"/>
+  <text x="110" y="1083" class="box-title">Reading the diagram</text>
+  <text x="110" y="1111" class="box-body">Left side finds evidence, middle side decides which past memories are trustworthy, and right side uses Reflexion to improve the answer only when the critic says improvement is needed.</text>
+</svg>

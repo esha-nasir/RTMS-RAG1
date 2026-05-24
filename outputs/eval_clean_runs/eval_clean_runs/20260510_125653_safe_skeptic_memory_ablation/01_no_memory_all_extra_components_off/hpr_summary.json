@@ -1,0 +1,15 @@
+{
+  "prediction_file": "eval_clean_runs/20260510_125653_safe_skeptic_memory_ablation/01_no_memory_all_extra_components_off/fixed_context_predictions.jsonl",
+  "records": 50,
+  "records_with_initial_unsupported": 50,
+  "initial_unsupported_claims": 67,
+  "repeated_answer_claims": 24,
+  "repeated_reflection_claims": 42,
+  "repeated_memory_claims": 24,
+  "repeated_any_claims": 49,
+  "hpr_answer": 0.3582089552238806,
+  "hpr_reflection": 0.6268656716417911,
+  "hpr_memory": 0.3582089552238806,
+  "hpr_any": 0.7313432835820896,
+  "match_threshold": 0.75
+}

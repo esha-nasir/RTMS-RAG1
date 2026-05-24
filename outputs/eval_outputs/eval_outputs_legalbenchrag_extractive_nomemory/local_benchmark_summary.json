@@ -1,0 +1,31 @@
+{
+  "config": {
+    "use_reflexion": true,
+    "max_iters": 3,
+    "top_k": 1,
+    "judge_qa": true,
+    "qa_only": true,
+    "retrieval_only": false,
+    "disable_retrieval": false,
+    "qa_benchmark_file": "qa_extractive_benchmark.jsonl",
+    "retrieval_benchmark_file": "retrieval_benchmark.jsonl"
+  },
+  "qa_draft": {
+    "total": 20,
+    "correct": 18,
+    "accuracy": 0.9,
+    "retrieval_hit": 20,
+    "retrieval_hit_rate": 1.0,
+    "span_hit": 0,
+    "span_hit_rate": 0.0,
+    "grounded": 20,
+    "grounded_rate": 1.0,
+    "hallucinated": 0,
+    "hallucination_rate": 0.0,
+    "abstained": 0,
+    "abstention_rate": 0.0,
+    "supported_but_wrong": 2,
+    "supported_but_wrong_rate": 0.1,
+    "parse_failures": 0
+  }
+}

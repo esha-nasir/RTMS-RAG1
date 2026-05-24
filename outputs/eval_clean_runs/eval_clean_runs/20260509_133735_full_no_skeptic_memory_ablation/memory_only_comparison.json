@@ -1,0 +1,40 @@
+{
+  "no_memory_summary": "eval_clean_runs/20260509_133735_full_no_skeptic_memory_ablation/01_no_memory_all_extra_components_off/fixed_context_summary.json",
+  "with_memory_summary": "eval_clean_runs/20260509_133735_full_no_skeptic_memory_ablation/02_with_temporal_memory_all_extra_components_off/fixed_context_summary.json",
+  "generation_hallucination_rate": {
+    "no_memory": 0.1,
+    "with_memory": 0.1,
+    "delta_with_minus_no": 0.0
+  },
+  "generation_non_hallucination_rate": {
+    "no_memory": 0.9,
+    "with_memory": 0.9,
+    "delta_with_minus_no": 0.0
+  },
+  "qrecc_answer_f1": {
+    "no_memory": 0.6317,
+    "with_memory": 0.6295,
+    "delta_with_minus_no": -0.0022
+  },
+  "qrecc_exact_match_rate": {
+    "no_memory": 0.14,
+    "with_memory": 0.14,
+    "delta_with_minus_no": 0.0
+  },
+  "memory_usage": {
+    "no_memory": {
+      "records": 50,
+      "records_with_memory_hits": 0,
+      "memory_hit_record_rate": 0.0,
+      "total_memory_hits": 0,
+      "memory_guided_prompt_first_records": 0
+    },
+    "with_memory": {
+      "records": 50,
+      "records_with_memory_hits": 1,
+      "memory_hit_record_rate": 0.02,
+      "total_memory_hits": 1,
+      "memory_guided_prompt_first_records": 1
+    }
+  }
+}

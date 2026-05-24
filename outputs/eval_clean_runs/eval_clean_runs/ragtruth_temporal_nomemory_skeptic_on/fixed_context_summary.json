@@ -1,0 +1,19 @@
+{
+  "config": {
+    "backend": "temporal",
+    "benchmark_family": "ragtruth",
+    "use_reflexion": true,
+    "disable_memory": true,
+    "max_iters": 3,
+    "max_samples": 0,
+    "top_k": 3,
+    "hallucination_source": "final_answer",
+    "detection_target": "generated_answer"
+  },
+  "total_records": 0,
+  "generation": {
+    "hallucination_rate": 0.0,
+    "non_hallucination_rate": 0.0,
+    "source_counts": {}
+  }
+}

@@ -1,0 +1,172 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="2350" viewBox="0 0 1800 2350">
+  <defs>
+    <style>
+      .title { font: 800 48px Arial, sans-serif; fill: #111820; }
+      .subtitle { font: 400 25px Arial, sans-serif; fill: #334155; }
+      .box-title { font: 800 30px Arial, sans-serif; fill: #111820; }
+      .box-text { font: 400 24px Arial, sans-serif; fill: #273444; }
+      .small { font: 700 22px Arial, sans-serif; fill: #334155; }
+      .arrow { stroke: #334155; stroke-width: 5; fill: none; marker-end: url(#arrowhead); }
+      .arrow-soft { stroke: #7C3AED; stroke-width: 5; fill: none; marker-end: url(#arrowheadPurple); stroke-dasharray: 14 10; }
+      .input { fill: #E8F3FF; stroke: #245A9A; stroke-width: 4; }
+      .baseline { fill: #FFF2D8; stroke: #A36B00; stroke-width: 4; }
+      .proposed { fill: #EAF8EA; stroke: #257A3E; stroke-width: 5; }
+      .memory { fill: #F4ECFF; stroke: #6D38A8; stroke-width: 4; }
+      .retrieval { fill: #EFFFF8; stroke: #08745F; stroke-width: 4; }
+      .generation { fill: #F8FAFC; stroke: #475569; stroke-width: 4; }
+      .verify { fill: #FFECEF; stroke: #B3263B; stroke-width: 4; }
+      .output { fill: #F0F3F5; stroke: #44515C; stroke-width: 4; }
+      .lane { fill: #FFFFFF; stroke: #CBD5E1; stroke-width: 3; }
+      .lane-label { font: 800 28px Arial, sans-serif; fill: #334155; }
+    </style>
+    <marker id="arrowhead" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto">
+      <path d="M0,0 L16,8 L0,16 Z" fill="#334155"/>
+    </marker>
+    <marker id="arrowheadPurple" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto">
+      <path d="M0,0 L16,8 L0,16 Z" fill="#7C3AED"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1800" height="2350" fill="#FFFFFF"/>
+  <text x="900" y="72" text-anchor="middle" class="title">DemoGate-RAG: Skeptic-Guided Temporal Success Memory</text>
+  <text x="900" y="112" text-anchor="middle" class="subtitle">Clear project flow for ReflexionTemporalMemorySuccessAgentRAG</text>
+
+  <rect x="80" y="150" width="1640" height="235" rx="18" class="lane"/>
+  <text x="115" y="192" class="lane-label">A. Input and System Selection</text>
+
+  <rect x="120" y="220" width="380" height="120" rx="14" class="input"/>
+  <text x="310" y="260" text-anchor="middle" class="box-title">1. Question</text>
+  <text x="310" y="296" text-anchor="middle" class="box-text">User query or benchmark sample</text>
+  <text x="310" y="326" text-anchor="middle" class="box-text">RAGTruth, QReCC, Legal QA</text>
+
+  <rect x="590" y="220" width="380" height="120" rx="14" class="input"/>
+  <text x="780" y="260" text-anchor="middle" class="box-title">2. Mode Selector</text>
+  <text x="780" y="296" text-anchor="middle" class="box-text">Choose dataset profile</text>
+  <text x="780" y="326" text-anchor="middle" class="box-text">and backend system</text>
+
+  <rect x="1060" y="220" width="560" height="120" rx="14" class="proposed"/>
+  <text x="1340" y="260" text-anchor="middle" class="box-title">3. Proposed System</text>
+  <text x="1340" y="296" text-anchor="middle" class="box-text">DemoGate-RAG: Reflexion + Skeptic</text>
+  <text x="1340" y="326" text-anchor="middle" class="box-text">+ Temporal Success-Aware Memory</text>
+
+  <path d="M500 280 H590" class="arrow"/>
+  <path d="M970 280 H1060" class="arrow"/>
+
+  <rect x="80" y="430" width="1640" height="285" rx="18" class="lane"/>
+  <text x="115" y="472" class="lane-label">B. Retrieval and Evidence Grounding</text>
+
+  <rect x="180" y="515" width="470" height="130" rx="14" class="retrieval"/>
+  <text x="415" y="556" text-anchor="middle" class="box-title">4. Retrieve Evidence</text>
+  <text x="415" y="592" text-anchor="middle" class="box-text">Get top-k relevant chunks</text>
+  <text x="415" y="622" text-anchor="middle" class="box-text">from fixed context or retriever</text>
+
+  <rect x="810" y="515" width="470" height="130" rx="14" class="retrieval"/>
+  <text x="1045" y="556" text-anchor="middle" class="box-title">5. Evidence Context</text>
+  <text x="1045" y="592" text-anchor="middle" class="box-text">The factual source for answer</text>
+  <text x="1045" y="622" text-anchor="middle" class="box-text">model should stay grounded here</text>
+
+  <path d="M1340 340 C1340 410 415 410 415 515" class="arrow"/>
+  <path d="M650 580 H810" class="arrow"/>
+
+  <rect x="80" y="760" width="1640" height="430" rx="18" class="lane"/>
+  <text x="115" y="802" class="lane-label">C. Temporal Success-Aware Episodic Memory</text>
+
+  <rect x="115" y="865" width="355" height="135" rx="14" class="memory"/>
+  <text x="292" y="907" text-anchor="middle" class="box-title">6. Load Memory</text>
+  <text x="292" y="943" text-anchor="middle" class="box-text">Past questions, answers,</text>
+  <text x="292" y="973" text-anchor="middle" class="box-text">reflections and outcomes</text>
+
+  <rect x="535" y="835" width="420" height="195" rx="14" class="memory"/>
+  <text x="745" y="877" text-anchor="middle" class="box-title">7. Score Each Memory</text>
+  <text x="745" y="913" text-anchor="middle" class="box-text">Similarity to current question</text>
+  <text x="745" y="943" text-anchor="middle" class="box-text">Temporal decay for age</text>
+  <text x="745" y="973" text-anchor="middle" class="box-text">Reliability alpha / beta</text>
+  <text x="745" y="1003" text-anchor="middle" class="box-text">Risk penalty and metadata bonus</text>
+
+  <rect x="1040" y="865" width="360" height="135" rx="14" class="memory"/>
+  <text x="1220" y="907" text-anchor="middle" class="box-title">8. Select Guidance</text>
+  <text x="1220" y="943" text-anchor="middle" class="box-text">Use only relevant, recent,</text>
+  <text x="1220" y="973" text-anchor="middle" class="box-text">successful, low-risk memories</text>
+
+  <rect x="1440" y="865" width="240" height="135" rx="14" class="memory"/>
+  <text x="1560" y="907" text-anchor="middle" class="box-title">Memory Text</text>
+  <text x="1560" y="943" text-anchor="middle" class="box-text">What to reuse</text>
+  <text x="1560" y="973" text-anchor="middle" class="box-text">what to avoid</text>
+
+  <path d="M470 932 H535" class="arrow"/>
+  <path d="M955 932 H1040" class="arrow"/>
+  <path d="M1400 932 H1440" class="arrow"/>
+  <path d="M1340 340 C1620 480 292 640 292 865" class="arrow-soft"/>
+
+  <rect x="80" y="1240" width="1640" height="255" rx="18" class="lane"/>
+  <text x="115" y="1282" class="lane-label">D. Prompting and Answer Generation</text>
+
+  <rect x="260" y="1330" width="500" height="120" rx="14" class="generation"/>
+  <text x="510" y="1370" text-anchor="middle" class="box-title">9. Build Prompt</text>
+  <text x="510" y="1406" text-anchor="middle" class="box-text">question + evidence + memory</text>
+  <text x="510" y="1436" text-anchor="middle" class="box-text">+ reflection guidance</text>
+
+  <rect x="970" y="1330" width="440" height="120" rx="14" class="generation"/>
+  <text x="1190" y="1370" text-anchor="middle" class="box-title">10. LLM Draft</text>
+  <text x="1190" y="1406" text-anchor="middle" class="box-text">Ollama / YandexGPT / Gemini</text>
+  <text x="1190" y="1436" text-anchor="middle" class="box-text">generates first answer</text>
+
+  <path d="M1045 645 C1045 1160 510 1160 510 1330" class="arrow"/>
+  <path d="M1560 1000 C1560 1220 510 1220 510 1330" class="arrow-soft"/>
+  <path d="M760 1390 H970" class="arrow"/>
+
+  <rect x="80" y="1545" width="1640" height="410" rx="18" class="lane"/>
+  <text x="115" y="1587" class="lane-label">E. Skeptic, Critic, and Reflexion Loop</text>
+
+  <rect x="120" y="1655" width="350" height="130" rx="14" class="verify"/>
+  <text x="295" y="1696" text-anchor="middle" class="box-title">11. Skeptic</text>
+  <text x="295" y="1732" text-anchor="middle" class="box-text">Find unsupported claims</text>
+  <text x="295" y="1762" text-anchor="middle" class="box-text">and false-premise risk</text>
+
+  <rect x="560" y="1655" width="350" height="130" rx="14" class="verify"/>
+  <text x="735" y="1696" text-anchor="middle" class="box-title">12. Trim Answer</text>
+  <text x="735" y="1732" text-anchor="middle" class="box-text">Remove unsupported parts</text>
+  <text x="735" y="1762" text-anchor="middle" class="box-text">keep answer grounded</text>
+
+  <rect x="1000" y="1655" width="350" height="130" rx="14" class="verify"/>
+  <text x="1175" y="1696" text-anchor="middle" class="box-title">13. Critic</text>
+  <text x="1175" y="1732" text-anchor="middle" class="box-text">Judge sufficiency, grounding</text>
+  <text x="1175" y="1762" text-anchor="middle" class="box-text">and usefulness</text>
+
+  <polygon points="1520,1645 1685,1720 1520,1795 1355,1720" class="verify"/>
+  <text x="1520" y="1712" text-anchor="middle" class="box-title">14. Good?</text>
+  <text x="1520" y="1746" text-anchor="middle" class="box-text">yes or no</text>
+
+  <rect x="555" y="1830" width="480" height="85" rx="14" class="verify"/>
+  <text x="795" y="1865" text-anchor="middle" class="box-title">15. If No: Reflection</text>
+  <text x="795" y="1896" text-anchor="middle" class="box-text">Create retry guidance and ask again</text>
+
+  <path d="M1190 1450 C1190 1550 295 1550 295 1655" class="arrow"/>
+  <path d="M470 1720 H560" class="arrow"/>
+  <path d="M910 1720 H1000" class="arrow"/>
+  <path d="M1350 1720 H1355" class="arrow"/>
+  <path d="M1395 1767 C1280 1890 1050 1890 1035 1872" class="arrow"/>
+  <path d="M555 1872 C250 1872 250 1250 510 1330" class="arrow-soft"/>
+
+  <rect x="80" y="2005" width="1640" height="255" rx="18" class="lane"/>
+  <text x="115" y="2047" class="lane-label">F. Final Answer, Evaluation, and Memory Learning</text>
+
+  <rect x="180" y="2100" width="370" height="110" rx="14" class="output"/>
+  <text x="365" y="2140" text-anchor="middle" class="box-title">16. Final Answer</text>
+  <text x="365" y="2176" text-anchor="middle" class="box-text">Returned to user or benchmark</text>
+
+  <rect x="690" y="2100" width="400" height="110" rx="14" class="memory"/>
+  <text x="890" y="2140" text-anchor="middle" class="box-title">17. Memory Update</text>
+  <text x="890" y="2176" text-anchor="middle" class="box-text">Save success, risk, alpha/beta</text>
+
+  <rect x="1230" y="2100" width="390" height="110" rx="14" class="output"/>
+  <text x="1425" y="2140" text-anchor="middle" class="box-title">18. Evaluation Output</text>
+  <text x="1425" y="2176" text-anchor="middle" class="box-text">F1, accuracy, hallucination rate</text>
+
+  <path d="M1605 1767 C1650 1900 365 1900 365 2100" class="arrow"/>
+  <path d="M550 2155 H690" class="arrow"/>
+  <path d="M1090 2155 H1230" class="arrow"/>
+  <path d="M890 2100 C1000 1950 1660 1260 1560 1000" class="arrow-soft"/>
+
+  <text x="900" y="2310" text-anchor="middle" class="small">Main contribution: memory is not reused blindly. It is selected by similarity, recency, reliability, hallucination risk, and metadata.</text>
+</svg>
