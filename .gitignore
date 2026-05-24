@@ -1,0 +1,25 @@
+
+# Large datasets and processed files
+benchmarks/datasets/*.jsonl
+benchmarks/datasets/ragtruth_processed/
+data/raw/
+data/processed/
+data/corpus/
+*.arrow
+
+# Evaluation outputs
+outputs/
+eval_runs/
+eval_clean_runs/
+eval_outputs_*/
+
+# Memory artifacts
+memories/
+memories_clean/
+
+# Local environments and caches
+.venv/
+rag-env/
+__pycache__/
+*.pyc
+.DS_Store
