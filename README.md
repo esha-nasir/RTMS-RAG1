@@ -18,7 +18,7 @@ The system was originally developed for grounded legal question answering over j
 
 ## RTMS-RAG Architecture
 
-![RTMS-RAG Architecture](docs/figures/rtms_architecture.png)
+![RTMS-RAG Architecture](docs/rtms_architecture.png)
 
 The architecture follows this general pipeline:
 
@@ -116,8 +116,8 @@ ReflexionTemporalMemorySuccessAgentRAG/
 │   ├── architecture.md
 │   ├── usage.md
 │   ├── repository_structure.md
-│   └── figures/
-│       └── rtms_architecture.png
+│   └── rtms_architecture.png
+│    
 │
 ├── thesis/
 │   ├── sources/
@@ -186,7 +186,7 @@ Contains generated evaluation outputs, predictions, comparison files, logs, and 
 Contains repository documentation and architecture figures. The main architecture image used in this README should be stored as:
 
 ```text
-docs/figures/rtms_architecture.png
+docs/rtms_architecture.png
 ```
 
 ### `thesis/`
